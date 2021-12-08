@@ -14,7 +14,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法图解小结part1-3 |  露蕊乌头</title>
+      <title>算法图解part4 |  露蕊乌头</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法图解part1-3"
+  id="post-算法图解part4"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -79,7 +79,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法图解小结part1-3
+  算法图解part4
 </h1>
  
 
@@ -87,15 +87,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/" class="article-date">
-  <time datetime="2021-12-07T09:40:00.000Z" itemprop="datePublished">2021-12-07</time>
+      <a href="/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/" class="article-date">
+  <time datetime="2021-12-08T09:04:45.000Z" itemprop="datePublished">2021-12-08</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">299</span>
+            <span class="post-count">556</span>
         </span>
     </span>
 
@@ -104,7 +104,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -119,28 +119,24 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="算法小结"><a href="#算法小结" class="headerlink" title="算法小结"></a>算法小结</h2><h3 id="PART-1-算法简介"><a href="#PART-1-算法简介" class="headerlink" title="PART 1 算法简介"></a>PART 1 算法简介</h3><ul>
-<li>二分查找的速度比简单查找快得多</li>
-<li>O(log n)比O(n)快，需要搜索的元素越多，前者比后者快的越多</li>
-<li>算法运行时间并不以秒为单位</li>
-<li>算法运行时间是从其增速的角度度量的</li>
-<li>算法运行时间用大O表示法表示</li>
+  <h3 id="算法图解小结part4"><a href="#算法图解小结part4" class="headerlink" title="算法图解小结part4"></a>算法图解小结part4</h3><h4 id="分而治之（divide-and-conquer，D-amp-C）"><a href="#分而治之（divide-and-conquer，D-amp-C）" class="headerlink" title="分而治之（divide and conquer，D&amp;C）"></a>分而治之（divide and conquer，D&amp;C）</h4><blockquote>
+<p>一种著名的递归式问题解决方法</p>
+</blockquote>
+<p>使用D&amp;C解决问题的过程包括两个步骤</p>
+<ul>
+<li>找出极基线条件，这种条件必须尽可能简单。</li>
+<li>不断将问题分拣（或者说缩小规模），直至符合基线条件。</li>
 </ul>
-<h3 id="PART-2-选择排序"><a href="#PART-2-选择排序" class="headerlink" title="PART 2 选择排序"></a>PART 2 选择排序</h3><ul>
-<li>计算机内存犹如一大堆抽屉</li>
-<li>需要存储多个元素时，可使用数组或链表</li>
-<li>数组的元素都在一起</li>
-<li>链表的元素是分开的，其中每个元素都存储了下一个元素的地址</li>
-<li>数组的读取速度很快，O(1)</li>
-<li>链表的插入和删除速度很快</li>
-<li>在同一个数组中，所有元素的类型都必须相同（都为int、double等）</li>
-</ul>
-<h3 id="PART-3-递归"><a href="#PART-3-递归" class="headerlink" title="PART 3 递归"></a>PART 3 递归</h3><ul>
-<li>递归指的是调用自己的函数</li>
-<li>每个递归函数都有两个条件：基线条件和递归条件</li>
-<li>栈有两种操作：压入和弹出</li>
-<li>所有函数调用都进入调用栈</li>
-<li>调用栈可能很长，这将占用大量的内存（可使用尾递归，避免栈溢出）</li>
+<h4 id="快速排序代码demo"><a href="#快速排序代码demo" class="headerlink" title="快速排序代码demo"></a>快速排序代码demo</h4><blockquote>
+<p>归纳证明：基线条件和归纳条件。<br>对于快速排序，在基线条件中，证明这种算法对空数组或包含一个元素的数组管用。在归纳条件中，证明如果快速排序对包含一个元素的数组管用，对包含两个元素的数组也将管用，对包含三个元素的数组也将管用，以此类推。因此可以说，快速排序对任何长度的数组都管用。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> arr;<span class="comment">//基线条件：为空或者只包含一个元素的数组是“有序”的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = arr[<span class="number">0</span>];<span class="comment">//选择基准值</span></span><br><span class="line">            <span class="keyword">return</span> Arrays.concatenate(Arrays.append(quickivotArr(pivot, arr), pivot) ,quickivot(gtPipivot, arr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**、</span></span><br><span class="line"><span class="comment">     * 获取所有小于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] ltPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取所有大于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] gtPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>D&amp;C将问题逐步分解。使用D&amp;C处理列表时，基线条件很可能是空数组或只包含一个元素的数组。</li>
+<li>实现快速排序时，请随机地选择用作基准值的元素。快速排序的平均运行时间为O(log n)。</li>
+<li>大O表示法的常量有时候事关重大，这就是快速排序比合并排序快的原因所在。（它们的运行时间都是n*log n）</li>
+<li>比较简单查找和二分查找时，常量几乎无关紧要，因为列表很长，O(log n)的速度比O(n)快得多。</li>
 </ul>
  
       <!-- reward -->
@@ -212,7 +208,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -223,19 +219,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            算法图解part4
-          
-        </div>
-      </a>
     
-    
-      <a href="/2021/12/02/hello-world/" class="article-nav-link">
+      <a href="/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Hello World</div>
+        <div class="article-nav-title">算法图解小结part1-3</div>
       </a>
     
   </nav>

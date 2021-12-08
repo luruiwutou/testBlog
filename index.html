@@ -175,6 +175,72 @@
     
     
     <article
+  id="post-算法图解part4"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/"
+    >算法图解part4</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/" class="article-date">
+  <time datetime="2021-12-08T09:04:45.000Z" itemprop="datePublished">2021-12-08</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="算法图解小结part4"><a href="#算法图解小结part4" class="headerlink" title="算法图解小结part4"></a>算法图解小结part4</h3><h4 id="分而治之（divide-and-conquer，D-amp-C）"><a href="#分而治之（divide-and-conquer，D-amp-C）" class="headerlink" title="分而治之（divide and conquer，D&amp;C）"></a>分而治之（divide and conquer，D&amp;C）</h4><blockquote>
+<p>一种著名的递归式问题解决方法</p>
+</blockquote>
+<p>使用D&amp;C解决问题的过程包括两个步骤</p>
+<ul>
+<li>找出极基线条件，这种条件必须尽可能简单。</li>
+<li>不断将问题分拣（或者说缩小规模），直至符合基线条件。</li>
+</ul>
+<h4 id="快速排序代码demo"><a href="#快速排序代码demo" class="headerlink" title="快速排序代码demo"></a>快速排序代码demo</h4><blockquote>
+<p>归纳证明：基线条件和归纳条件。<br>对于快速排序，在基线条件中，证明这种算法对空数组或包含一个元素的数组管用。在归纳条件中，证明如果快速排序对包含一个元素的数组管用，对包含两个元素的数组也将管用，对包含三个元素的数组也将管用，以此类推。因此可以说，快速排序对任何长度的数组都管用。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> arr;<span class="comment">//基线条件：为空或者只包含一个元素的数组是“有序”的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = arr[<span class="number">0</span>];<span class="comment">//选择基准值</span></span><br><span class="line">            <span class="keyword">return</span> Arrays.concatenate(Arrays.append(quickivotArr(pivot, arr), pivot) ,quickivot(gtPipivot, arr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**、</span></span><br><span class="line"><span class="comment">     * 获取所有小于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] ltPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取所有大于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] gtPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>D&amp;C将问题逐步分解。使用D&amp;C处理列表时，基线条件很可能是空数组或只包含一个元素的数组。</li>
+<li>实现快速排序时，请随机地选择用作基准值的元素。快速排序的平均运行时间为O(log n)。</li>
+<li>大O表示法的常量有时候事关重大，这就是快速排序比合并排序快的原因所在。（它们的运行时间都是n*log n）</li>
+<li>比较简单查找和二分查找时，常量几乎无关紧要，因为列表很长，O(log n)的速度比O(n)快得多。</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-算法图解part1-3"
   class="article article-type-post"
   itemscope
