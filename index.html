@@ -175,6 +175,153 @@
     
     
     <article
+  id="post-算法图解part5"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/"
+    >算法图解part5</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/" class="article-date">
+  <time datetime="2021-12-09T06:53:32.000Z" itemprop="datePublished">2021-12-09</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="算法图解part5"><a href="#算法图解part5" class="headerlink" title="算法图解part5"></a>算法图解part5</h2><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><blockquote>
+<p>你几乎不用自己去实现散列表，因为你使用的编程语言提供了散列表实现。你可以各种语言提供的散列表，并假定能够获得平均情况下的性能：<strong>常量时间</strong></p>
+</blockquote>
+<p>散列表可以理解为Java语言中的hashmap，它拥有几个特征：</p>
+<ul>
+<li>散列函数<ul>
+<li>必须满足的一些要求<ul>
+<li>他必须是一致的。每次相同的输入必须得到相同的结果。</li>
+<li>它应将不同的输入映射到不同的数字。（此时就引入了下一个环节的<strong>冲突</strong>）</li>
+<li>它知道数组的大小，只会返回有效的索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用案例<ul>
+<li>将散列表用于查找/模拟映射关系<ul>
+<li>电话簿</li>
+<li>NDS解析（域名转换为IP）</li>
+</ul>
+</li>
+<li>防止重复<ul>
+<li>投票</li>
+</ul>
+</li>
+<li>将散列表用作缓存/记住数据<ul>
+<li>Web缓存常用数据，用以加速网络加载，提高用户体验</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><blockquote>
+<p>前面提到的散列函数总是将不同的键映射到数组的不同位置，实际上是几乎不可能的。</p>
+</blockquote>
+<p>如果两个键映射到一个位置的时候，就在这个位置存储一个链表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[k]-&gt;[]-&gt;[]-[] //链表</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">数组</span><br></pre></td></tr></table></figure>
+
+<p>经验教训：</p>
+<ul>
+<li><strong>散列函数很重要</strong>。前面的散列函数将所有的键将所有的键都映射到一个位置，而理想的情况是，散列函数将键均匀地映射到散列表的不同位置。</li>
+<li>如果散列表存储的链表很长，散列表的速度将急剧下降。然而，如果使用的散列函数很好，这些链表就不会很长！</li>
+</ul>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>散列表的性能</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>散列表平均情况(常量时间)</th>
+<th>散列表最糟情况</th>
+<th>数组</th>
+<th>链表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查找</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>插入</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody></table>
+<p>在平均情况下，散列表的查找（获取给定索引处的值）速度和数组一样快，而插入和删除的速度和链表一样快，因此它兼具两者的优点！</p>
+<p>但是在最糟情况下，散列表的各种操作的速度都很慢，因此使用散列表时，避开最糟情况至关重要。</p>
+<p>如何避免：</p>
+<ul>
+<li>较低的填装因子；<ul>
+<li>散列表包含的元素数/位置总数。</li>
+<li>填装因子越低，发生冲突的可能性越小。散列表的性能越高。</li>
+<li>调整散列表长度的工作开销很大，但是平均而言，即使这样也不影响散列表操作时间O(1)。</li>
+</ul>
+</li>
+<li>良好的散列函数。<ul>
+<li>SHA函数等等，可后续了解</li>
+</ul>
+</li>
+</ul>
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>散列表是一种功能强大的数据结构，其操作速度快，还能让你以不同的方式建立数据模型。</p>
+<ul>
+<li>你可以结合散列函数和数组来创建散列表。</li>
+<li>冲突很糟糕，你应使用可以最大限度减少冲突的散列函数。</li>
+<li>散列表的查找、插入和删除速度都非常快。</li>
+<li>散列表适合用于模拟映射关系。</li>
+<li>一旦填装因子超过0.7，就该调整散列表的长度。</li>
+<li>散列表可用于缓存数（例如，在Web服务器）。</li>
+<li>散列表非常适合用于防止重复。</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-算法图解part4"
   class="article article-type-post"
   itemscope
