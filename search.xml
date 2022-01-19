@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>阅读记</title>
-    <url>/2022/01/19/read_01/</url>
+    <url>/2022/01/19/%E9%98%85%E8%AF%BB/read_01/</url>
     <content><![CDATA[<h1 id="理想国"><a href="#理想国" class="headerlink" title="理想国"></a>理想国</h1><ul>
 <li>理想国</li>
 </ul>
@@ -13,7 +13,7 @@
   </entry>
   <entry>
     <title>算法图解part6</title>
-    <url>/2021/12/28/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part6/</url>
+    <url>/2021/12/28/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part6/</url>
     <content><![CDATA[<h2 id="算法图解part6"><a href="#算法图解part6" class="headerlink" title="算法图解part6"></a>算法图解part6</h2><h3 id="图是什么"><a href="#图是什么" class="headerlink" title="图是什么"></a>图是什么</h3><p><strong>图模拟一组链接</strong></p>
 <p>图由节点和边组成。一个节点可能与众多节点直接相连，这些节点被称为邻居。</p>
 <h3 id="广度优先搜索———图算法"><a href="#广度优先搜索———图算法" class="headerlink" title="广度优先搜索———图算法"></a>广度优先搜索———图算法</h3><blockquote>
@@ -80,7 +80,7 @@
   </entry>
   <entry>
     <title>算法图解part5</title>
-    <url>/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/</url>
+    <url>/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/</url>
     <content><![CDATA[<h2 id="算法图解part5"><a href="#算法图解part5" class="headerlink" title="算法图解part5"></a>算法图解part5</h2><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><blockquote>
 <p>你几乎不用自己去实现散列表，因为你使用的编程语言提供了散列表实现。你可以各种语言提供的散列表，并假定能够获得平均情况下的性能：<strong>常量时间</strong></p>
 </blockquote>
@@ -188,7 +188,7 @@
   </entry>
   <entry>
     <title>算法图解part4</title>
-    <url>/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/</url>
+    <url>/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/</url>
     <content><![CDATA[<h3 id="算法图解小结part4"><a href="#算法图解小结part4" class="headerlink" title="算法图解小结part4"></a>算法图解小结part4</h3><h4 id="分而治之（divide-and-conquer，D-amp-C）"><a href="#分而治之（divide-and-conquer，D-amp-C）" class="headerlink" title="分而治之（divide and conquer，D&amp;C）"></a>分而治之（divide and conquer，D&amp;C）</h4><blockquote>
 <p>一种著名的递归式问题解决方法</p>
 </blockquote>
@@ -215,7 +215,7 @@
   </entry>
   <entry>
     <title>算法图解小结part1-3</title>
-    <url>/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/</url>
+    <url>/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/</url>
     <content><![CDATA[<h2 id="算法小结"><a href="#算法小结" class="headerlink" title="算法小结"></a>算法小结</h2><h3 id="PART-1-算法简介"><a href="#PART-1-算法简介" class="headerlink" title="PART 1 算法简介"></a>PART 1 算法简介</h3><ul>
 <li>二分查找的速度比简单查找快得多</li>
 <li>O(log n)比O(n)快，需要搜索的元素越多，前者比后者快的越多</li>
