@@ -14,7 +14,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>阅读记 |  露蕊乌头</title>
+      <title>算法图解part7 |  露蕊乌头</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-阅读/read_01"
+  id="post-算法图解/算法图解part7"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -79,7 +79,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  阅读记
+  算法图解part7
 </h1>
  
 
@@ -87,19 +87,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/01/19/%E9%98%85%E8%AF%BB/read_01/" class="article-date">
-  <time datetime="2022-01-19T02:10:00.000Z" itemprop="datePublished">2022-01-19</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/">阅读记录</a>
-  </div>
-  
+      <a href="/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/" class="article-date">
+  <time datetime="2022-01-21T02:00:00.000Z" itemprop="datePublished">2022-01-21</time>
+</a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">6</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -108,7 +104,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -123,8 +119,43 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="理想国"><a href="#理想国" class="headerlink" title="理想国"></a>理想国</h1><ul>
-<li>理想国</li>
+  <h2 id="算法图解part7"><a href="#算法图解part7" class="headerlink" title="算法图解part7"></a>算法图解part7</h2><h3 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h3><blockquote>
+<p>在广度优先搜索中，你能找到A到B点最短的路径。</p>
+<p>但是在路径上加上时间<strong>权重</strong>后，此时我们需要找出A到B最快的路径怎么办呢，这里就引入了狄克斯特拉算法（Dijkstra‘s algorithm）。</p>
+</blockquote>
+<hr>
+<p>此算法包含四个步骤：</p>
+<ol>
+<li>找出“最便宜”的节点，即可在最短时间内到达的节点。</li>
+<li>对于该节点的邻居，检查是否有前往它们的更短路径，如果有，则更新其开销</li>
+<li>重复这个过程，直到对图中的每个节点（终点不需要）都这样做了</li>
+<li>计算最终路径。</li>
+</ol>
+<p>狄克斯特拉算法用于每条边都有关联数字的图，这些数字称为权重，带权重的图称为 <strong>加权图（weighted graph）</strong>，不带权重的称为   <strong>非加权图（unweighted graph）</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E6%9D%83%E9%87%8D%E5%9B%BE-2022-1-21%2010:44:27.png" alt="加权图"></p>
+<p>但是如果图中出现了带环的，那么我们可能出现绕环的行为，所以说，狄克斯特拉算法只适用于 <strong>有向无环图（directed acyclic graph，DAG）</strong></p>
+<p>算法背后关键的理念：<strong>找出图中最便宜的节点，并确保没有到该节点的更便宜的路径</strong></p>
+<p>**<u>如果有负权边，就不能使用狄克斯特拉算法</u>**，因为负权边会导致这种算法不管用。当有负权边的图中，可以使用另一种算法—— <em>贝尔曼 - 福德算法（Bellman-Ford algorithm）</em>，这里不做介绍。</p>
+<h4 id="实现——以下图为例子"><a href="#实现——以下图为例子" class="headerlink" title="实现——以下图为例子"></a>实现——以下图为例子</h4><p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%9B%BE%E4%BE%8B-2022-1-21%2011:07:41.png"></p>
+<p>要解决这个问题的代码，需要三个散列表，如：<br><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%95%A3%E5%88%97%E8%A1%A8%E5%9B%BE%E7%A4%BA-2022-1-21%2011:19:16.png"></p>
+<p>部分代码如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br></pre></td></tr></table></figure>
+
+<p>然后需要一个数组用于记录处理过的节点，因为对于同一个节点，不用处理多次。<code>processed = []</code></p>
+<p>准备工作做完后，下面来看看算法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642743675(1">-2022-1-21 13:41:27.jpg)</p>
+<p>完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 找出最低开销的节点  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_lowest_cost_node</span>(<span class="params">costs</span>):</span></span><br><span class="line">    lowest_cost = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">    lowest_cost_node = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> costs:</span><br><span class="line">        cost = costs[node]</span><br><span class="line">        <span class="keyword">if</span> cost &lt; lowest_cost <span class="keyword">and</span> node <span class="keyword">not</span> <span class="keyword">in</span> processed:</span><br><span class="line">            lowest_cost = cost</span><br><span class="line">            lowest_cost_node = node</span><br><span class="line">    <span class="keyword">return</span> lowest_cost_node</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br><span class="line">processed = []</span><br><span class="line">node = find_lowest_cost_node(costs) <span class="comment">#在未处理的节点中找出开销最小的节点</span></span><br><span class="line"><span class="keyword">while</span> node <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>: <span class="comment">#所有节点都被处理过后结束</span></span><br><span class="line">    cost = costs[node]  </span><br><span class="line">    neighbors = graph[node]</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> neighbors.keys():  <span class="comment">#遍历当前节点的所有邻居</span></span><br><span class="line">        new_cost = cost + neighbors[n] </span><br><span class="line">        <span class="keyword">if</span> costs[n] &gt; new_cost:  <span class="comment">#如果经当前节点前往该邻居更近</span></span><br><span class="line">            costs[n] = new_cost <span class="comment">#就更新该邻居的开销</span></span><br><span class="line">            parents[n] = node <span class="comment"># 同时将该邻居的父节点设置为当前节点</span></span><br><span class="line">    processed.append(node)  <span class="comment">#将当前节点标记为处理过</span></span><br><span class="line">    node = find_lowest_cost_node(costs) <span class="comment">#找出接下来要处理的节点，并循环</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总花费需要：&quot;</span>+ <span class="built_in">str</span>(costs[<span class="string">&quot;fin&quot;</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>广度优先搜索用于在非加权图中查找最短路径。</li>
+<li>狄克斯特拉算法用于在加权图中查找最短路径。</li>
+<li>仅当权重为正时，狄克斯特拉算法才管用</li>
+<li>如果图中包含负权边，请使用贝尔曼-福德算法</li>
 </ul>
  
       <!-- reward -->
@@ -196,30 +227,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2022/01/19/%E9%98%85%E8%AF%BB/read_01/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/" rel="tag">算法图解</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/" class="article-nav-link">
+      <a href="/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">
           
-            算法图解part7
+            算法图解part8
           
         </div>
       </a>
     
     
-      <a href="/2021/12/28/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part6/" class="article-nav-link">
+      <a href="/2022/01/19/%E9%98%85%E8%AF%BB/read_01/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">算法图解part6</div>
+        <div class="article-nav-title">阅读记</div>
       </a>
     
   </nav>

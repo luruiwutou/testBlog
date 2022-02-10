@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.luruiwutou.cn/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.luruiwutou.cn/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/</loc>
+    
+    <lastmod>2022-02-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.luruiwutou.cn/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/</loc>
     
     <lastmod>2022-01-19</lastmod>
@@ -103,7 +121,7 @@
 
   <url>
     <loc>https://blog.luruiwutou.cn/</loc>
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-02-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,7 +129,7 @@
   
   <url>
     <loc>https://blog.luruiwutou.cn/tags/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/</loc>
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -120,7 +138,7 @@
   
   <url>
     <loc>https://blog.luruiwutou.cn/categories/%E9%98%85%E8%AF%BB%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2022-01-19</lastmod>
+    <lastmod>2022-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
