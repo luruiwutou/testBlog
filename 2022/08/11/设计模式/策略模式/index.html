@@ -14,7 +14,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>算法图解part8 |  露蕊乌头</title>
+      <title>策略模式 |  露蕊乌头</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -68,7 +68,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-算法图解/算法图解part8"
+  id="post-设计模式/策略模式"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -79,7 +79,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  算法图解part8
+  策略模式
 </h1>
  
 
@@ -87,15 +87,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/" class="article-date">
-  <time datetime="2022-01-21T06:00:00.000Z" itemprop="datePublished">2022-01-21</time>
+      <a href="/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2022-08-11T10:00:00.000Z" itemprop="datePublished">2022-08-11</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.7k</span>
+            <span class="post-count">846</span>
         </span>
     </span>
 
@@ -104,7 +104,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">6 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -119,131 +119,59 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="算法图解part8"><a href="#算法图解part8" class="headerlink" title="算法图解part8"></a>算法图解part8</h2><h3 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h3><blockquote>
-<p>内容：</p>
-<p>学习如何处理不可能完成的任务：没有快速算法的问题（NP完全问题）</p>
-<p>学习识别NP完全问题，以免浪费时间去寻找解决它们的快速算法</p>
-<p>学习近似策略，使用它们可快速找到NP完全问题的近似解</p>
-<p>学习贪婪策略——一种非常简单的问题解决策略</p>
+  <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	fly()</span><br><span class="line">	quack()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="把问题归零"><a href="#把问题归零" class="headerlink" title="把问题归零"></a>把问题归零</h4><p>把会变化的部分取出来并<strong>封装</strong>起来,好让起来部分不会收到影响.</p>
+<p>结果如何?代码变化之后,出其不意的部分变得很少,系统变得更有弹性.</p>
+<blockquote>
+<p>设计原则<br>    找出应用中可能需要变化之处，把他们独立出来，不要和那些不需要变化的代码混在一起<br>        换句话说，把会变化的部分取出来并封装起来，一边以后可以轻易地扩充此部分，而不影响不需要变化的其他部分。**[系统中的某部分改变不会影响其他部分]**。</p>
 </blockquote>
-<hr>
-<p>贪婪算法很简单：<strong>每步都选择局部最优解，最终得到的就是全局最优解</strong>，它并非在任何情况下都行之有效，但是易于实现！</p>
-<p>举例：</p>
-<p>你是个贪婪的小偷，背着个可装35磅重东西的背包，在商场伺机盗窃可装入背包的商品，此时你会采取贪婪策略：</p>
-<ol>
-<li>盗窃可装入背包的最贵商品。</li>
-<li>再盗窃还可装入被背包的最贵商品，以此类推。</li>
-</ol>
-<p>但是这次这种策略不太好用了，因为商场只有三种商品可以盗窃：</p>
-<p>笔记本电脑——2000$、20磅，音响——3000$、30磅，吉他——1500$、15磅</p>
-<p>音响最贵，偷了音响，但是背包装不下其他东西了，但是如果你头笔记本电脑和吉他，价值将大于音响。</p>
-<p>在这里，贪婪策略显然不能获得最优解，但是非常接近，所有有些情况下，完美时优秀的敌人。有时候，你只需要找到一个能够大致解决问题的算法，此时贪婪算法正好可派上用场，因为它们实现起来容易，得到的结果又与正确结果相当接近。</p>
-<p>这个例子，你别无选择，只能使用贪婪算法。</p>
-<h4 id="集合覆盖问题"><a href="#集合覆盖问题" class="headerlink" title="集合覆盖问题"></a>集合覆盖问题</h4><p>假设你办了个广播节目，要让全美50个州的听众都收听得到，为此，你需要决定在哪些广播台播出，每个广播台只能覆盖部分州，且都需要支付费用，因此，你力图在尽量少的广播台播出。</p>
-<p>![](<a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21">https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21</a> 14:36:25.png)</p>
-<p>如何找出覆盖全美的最小广播台集合呢？听起来容易，但是其实非常难，具体方法如下:</p>
-<ol>
-<li>列出每个可能的广播台集合，这被称为 <strong>幂集（power set）</strong>，可能的子集有  $$ 2^n $$</li>
-<li>在这些集合中，选出覆盖全美50个州的最小集合</li>
-</ol>
-<p>由于可能的子集有$2^n$个，因此运行时间为O($2^n$) 。假设你每秒可计算10个子集，所需的时间将如下。</p>
-<table>
-<thead>
-<tr>
-<th align="center">广播台数量</th>
-<th>需要的时间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">5</td>
-<td>3.2秒</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td>102.4秒</td>
-</tr>
-<tr>
-<td align="center">32</td>
-<td>13.6年</td>
-</tr>
-<tr>
-<td align="center">100</td>
-<td>4×$10^{21}$年</td>
-</tr>
-</tbody></table>
-<p> <strong>近似算法</strong></p>
-<ol>
-<li>选出这样一个广播台，即它覆盖了最多的未覆盖州。即便这个广播台覆盖了一些已覆盖的州也没有关系。</li>
-<li>重复第一步，知道覆盖了所有的州。</li>
-</ol>
-<p>判断近似算法优劣的标准如下：</p>
-<ul>
-<li>速度有多快</li>
-<li>得到的近似解与最优解的接近程度。</li>
-</ul>
-<p>这个例子中，贪婪算法的运行时间为O($n^2$),其中n为广播数量。</p>
-<ol>
-<li><p><strong>准备工作</strong></p>
-<p>创建一个set集合，其中包含要覆盖的州。</p>
-<p><code>states_needed = set([&quot;mt&quot;,&quot;wa&quot;,&quot;or&quot;,&quot;id&quot;,&quot;nv&quot;,&quot;ut&quot;,&quot;ca&quot;,&quot;az&quot;]) </code></p>
-<p>还需要有可供选择的广播台清单，用散列表表示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;wa&quot;</span>,<span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([nv<span class="string">&quot;,&quot;</span>ut<span class="string">&quot;])</span></span><br><span class="line"><span class="string">stations[&quot;</span>k5<span class="string">&quot;] = set([&quot;</span>ca<span class="string">&quot;,&quot;</span>az<span class="string">&quot;])</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">	QuackBehavior quackBehavior;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>最后需要一个集合来存储最终选择的广播台</p>
-<p>final_stations = set()</p>
-</li>
-<li><p><strong>计算答案</strong></p>
-<p>正确的解可能有多个。所以需要遍历所有的广播台，从中选择覆盖了最多的未覆盖州的广播台。将其存储在<code>best_station</code>中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">best_station = <span class="literal">None</span></span><br><span class="line">states_covered = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.item():</span><br><span class="line">	covered = states_needed &amp; states_for_station <span class="comment">#拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered)&gt; <span class="built_in">len</span>(states_covered): <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered <span class="comment"># 记录那些已经覆盖的州</span></span><br></pre></td></tr></table></figure>
 
-<p>完整代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">states_needed = <span class="built_in">set</span>([<span class="string">&quot;mt&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;or&quot;</span>, <span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>, <span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k5&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">final_stations = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">while</span> states_needed:  <span class="comment"># 直到需要覆盖的州为空时，停下来</span></span><br><span class="line">    best_station = <span class="literal">None</span></span><br><span class="line">    states_covered = <span class="built_in">set</span>()  <span class="comment"># 包含该广播台覆盖的所有未覆盖的州，</span></span><br><span class="line">    <span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.items():  <span class="comment"># for循环迭代每个广播台，并确定它是否最佳的广播台</span></span><br><span class="line">        <span class="comment"># 拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        covered = states_needed &amp; states_for_station</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered) &gt; <span class="built_in">len</span>(states_covered):  <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station  <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered  <span class="comment"># 记录那些已经覆盖的州</span></span><br><span class="line">    states_needed -= states_covered  <span class="comment"># 去掉那些已经覆盖过的州</span></span><br><span class="line">    final_stations.add(best_station)  <span class="comment"># 将best_station添加到最终的广播台列表中去</span></span><br><span class="line"><span class="built_in">print</span>(final_stations)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>比较下贪婪算法和精准算法的运行时间</p>
-<table>
-<thead>
-<tr>
-<th align="center">广播台数量</th>
-<th>需要的时间（精准算法）O($2^n$)</th>
-<th>需要的时间（贪婪算法）O($n^2$)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">5</td>
-<td>3.2秒</td>
-<td>2.5秒</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td>102.4秒</td>
-<td>10秒</td>
-</tr>
-<tr>
-<td align="center">32</td>
-<td>13.6年</td>
-<td>102.4秒</td>
-</tr>
-<tr>
-<td align="center">100</td>
-<td>4×$10^{21}$年</td>
-<td>16.67分钟</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h4 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h4><p>如何判断问题是不是NP完全问题</p>
+
+
+
+<h4 id="如何设计类实现不同的行为？"><a href="#如何设计类实现不同的行为？" class="headerlink" title="如何设计类实现不同的行为？"></a>如何设计类实现不同的行为？</h4><p>从现在开始,鸭子的行为将被放在分开的类中,此类专门提供某行为的实现,这样鸭子类就不再需要知道行为的实现细节.</p>
+<blockquote>
+<p>设计原则<br>    针对接口编程，而不是针对实现编程。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyWithWings</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//扇动翅膀飞</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyNoWay</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//飞不动</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Squeak</span> <span class="keyword">implements</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack()&#123;</span><br><span class="line">        <span class="comment">//叽叽叫</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样的设计,可以让飞行和叫的动作被其他的对象复用,因为这些行为已经与鸭子无关了,而且我们可以新增一些行为,也不会影响到既有的行为类,也不会影响有<em>使用</em>到飞行行为的鸭子类.</p>
+<h5 id="整合鸭子的行为"><a href="#整合鸭子的行为" class="headerlink" title="整合鸭子的行为"></a>整合鸭子的行为</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//行为变量被声明为接口类型</span></span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">    <span class="comment">//等等</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将飞行行为委托给FlyBehavior处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MallardDuck</span> <span class="keyword">extends</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//这样绿头鸭就会叽叽叫了 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MallardDuck</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior = <span class="keyword">new</span> FlyWithWings();</span><br><span class="line">        quackBehavior = <span class="keyword">new</span> Squeak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="动态设定行为"><a href="#动态设定行为" class="headerlink" title="动态设定行为"></a>动态设定行为</h5><p>再<code>Duck</code>类中,加入对属性的setter方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyBehavior</span><span class="params">(FlyBehavior flyBehavior)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.flyBehavior=flyBehavior;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Stringp[] args)</span></span>&#123;</span><br><span class="line">        Duck model =<span class="keyword">new</span> MallardDuck();</span><br><span class="line">        model.performFly();</span><br><span class="line">        <span class="comment">//此时还是扇动翅膀飞</span></span><br><span class="line">        model.setFlyBehavior(<span class="keyword">new</span> FlyNoWay());</span><br><span class="line">        <span class="comment">//变为不会飞了</span></span><br><span class="line">        model.performFly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="封装行为的大局观"><a href="#封装行为的大局观" class="headerlink" title="封装行为的大局观"></a>封装行为的大局观</h4><p>​        在重新设计后,我们不再把鸭子的行为说成<strong>一组行为</strong>,我们开始把行为想成<strong>一族算法</strong>,算法代表鸭子能做的事(不同的叫法和飞行方法)</p>
+<p><strong>有一个</strong>可能比<strong>是一个</strong>更好.</p>
+<p>​    每一只鸭子都有一个<code>FlyBehavior</code>,让鸭子将飞行委托它们代为处理,而不是从父类继承过来自己定义实现.</p>
+<p>引入设计原则<br>    <strong>多用组合，少用继承。</strong></p>
+<p>对鸭子不同的子类的实现,引入了此次学习的对象:<strong>策略模式(Strategy Pattern)</strong></p>
+<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
+<p><strong>设计工具箱</strong></p>
 <ul>
-<li>元素较少时，算法的运行速度非常快，但随着元素数量的增加，速度会变得非常慢。</li>
-<li>涉及“所有组合”的问题通常是NP完全问题。</li>
-<li>不能将问题分成小问题，必须考虑各种可能的情况。这可能是NP完全问题。</li>
-<li>如果问题涉及序列(如旅行商问题中的城市序列)且难以解决，它可能就是NP完全问题。</li>
-<li>如果问题涉及集合（如广播台集合）且难以解决，它可能就是NP完全问题。</li>
-<li>如果问题可转换为集合覆盖问题或旅行商问题，那它肯定就是NP完全问题</li>
+<li><strong>OO基础</strong><ul>
+<li><strong>抽象</strong></li>
+<li><strong>封装</strong></li>
+<li><strong>多态</strong></li>
+<li><strong>继承</strong></li>
 </ul>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
-<li>贪婪算法寻找巨部最优解，企图以这种方式获得全局最优解</li>
-<li>对于NP完全问题，还没有找到快速解决方案</li>
-<li>面临NP完全问题时，最佳的做法是使用近似算法。</li>
-<li>贪婪算法易于实现，运行速度快，是不错的近似算法。</li>
+</li>
+<li><strong>OO原则</strong><ul>
+<li><strong>封装变化</strong></li>
+<li><strong>多用组合，少用继承</strong></li>
+<li><strong>针对接口编程，不针对实现编程</strong></li>
+</ul>
+</li>
+<li><strong>OO模式</strong><ul>
+<li><strong>【策略】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></li>
+</ul>
+</li>
 </ul>
  
       <!-- reward -->
@@ -315,12 +243,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.luruiwutou.cn/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/" rel="tag">算法图解</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -328,19 +256,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AE%80%E4%BB%8B-/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">
-          
-            设计模式简介
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">算法图解part7</div>
+        <div class="article-nav-title">设计模式简介</div>
       </a>
     
   </nav>
