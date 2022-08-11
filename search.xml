@@ -3,7 +3,10 @@
   <entry>
     <title>策略模式</title>
     <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
+    <content><![CDATA[<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
+</blockquote>
+<h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	fly()</span><br><span class="line">	quack()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -36,7 +39,6 @@
 <p>​    每一只鸭子都有一个<code>FlyBehavior</code>,让鸭子将飞行委托它们代为处理,而不是从父类继承过来自己定义实现.</p>
 <p>引入设计原则<br>    <strong>多用组合，少用继承。</strong></p>
 <p>对鸭子不同的子类的实现,引入了此次学习的对象:<strong>策略模式(Strategy Pattern)</strong></p>
-<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
 <p><strong>设计工具箱</strong></p>
 <ul>
 <li><strong>OO基础</strong><ul>
@@ -58,6 +60,9 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
       <tags>
         <tag>设计模式</tag>
       </tags>
@@ -80,6 +85,9 @@
 <p>设计是一种艺术，总是有许多取舍的地方。能够合理采用这些设计模式，就可以领先别人一点点。</p>
 <h4 id="找不到合适的模式怎么办？"><a href="#找不到合适的模式怎么办？" class="headerlink" title="找不到合适的模式怎么办？"></a>找不到合适的模式怎么办？</h4><p>​        有一些面向对象原则，适用于所有的模式，当无法找到适当的模式解决问题时，采用这些原则可以帮助到你。</p>
 ]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
       <tags>
         <tag>设计模式</tag>
       </tags>

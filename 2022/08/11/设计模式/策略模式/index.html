@@ -89,7 +89,11 @@
     <div class="article-meta">
       <a href="/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="article-date">
   <time datetime="2022-08-11T10:00:00.000Z" itemprop="datePublished">2022-08-11</time>
-</a>   
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+  </div>
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -119,7 +123,10 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
+  <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
+</blockquote>
+<h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	fly()</span><br><span class="line">	quack()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -152,7 +159,6 @@
 <p>​    每一只鸭子都有一个<code>FlyBehavior</code>,让鸭子将飞行委托它们代为处理,而不是从父类继承过来自己定义实现.</p>
 <p>引入设计原则<br>    <strong>多用组合，少用继承。</strong></p>
 <p>对鸭子不同的子类的实现,引入了此次学习的对象:<strong>策略模式(Strategy Pattern)</strong></p>
-<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
 <p><strong>设计工具箱</strong></p>
 <ul>
 <li><strong>OO基础</strong><ul>
