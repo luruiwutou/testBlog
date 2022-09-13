@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>装饰者模式</title>
+    <url>/2022/09/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h3><h4 id="引入示例"><a href="#引入示例" class="headerlink" title="引入示例"></a>引入示例</h4><p>![扩展示例](<a href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13</a> 13:54:16.png)</p>
+<p><strong>错误示例：</strong></p>
+<p>对每种子类都需要不同的计算方式，然后导致“类爆炸”、设计死板、基类加入的新功能并不适用于所有的子类。</p>
+<p>![类继承错误示例](<a href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048634444-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048634444-2022-9-13</a> 13:57:15.png)</p>
+<p><strong>引入设计原则：类应该对扩展开放，对修改关闭。</strong></p>
+<blockquote>
+<p>遵循开放-关闭原则，通常会引入新的抽象层次，增加代码的复杂度，无需把设计的每个部分都这么设计，只需要将设计中最有可能改变的地方，去应用开放-关闭原则</p>
+</blockquote>
+<h4 id="认识装饰者模式"><a href="#认识装饰者模式" class="headerlink" title="认识装饰者模式"></a>认识装饰者模式</h4><p>既然了解到继承无法完全解决问题，那么采用一种新的设计方式，还是上文提到的咖啡店，我们要以饮料为主，然后在运行时以调料来“<strong>装饰</strong>”（decorate）饮料，例如顾客想要摩卡和奶泡深焙咖啡，那么要做的是：</p>
+<ol>
+<li>拿一个深焙咖啡（DarkRost）对象</li>
+<li>拿摩卡（Mocha）对象装饰它</li>
+<li>拿奶泡（Whip）对象装饰它</li>
+<li>调用cost()方法，并依赖委托（delegate）将调料价格加上去</li>
+</ol>
+<p><strong>图示：</strong></p>
+<p>![](<a href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663055989692-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663055989692-2022-9-13</a> 15:59:50.png)</p>
+<p>![](<a href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663056043454-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663056043454-2022-9-13</a> 16:00:44.png)</p>
+<h4 id="定义装饰者模式"><a href="#定义装饰者模式" class="headerlink" title="定义装饰者模式"></a>定义装饰者模式</h4><blockquote>
+<p><strong>装饰者模式</strong>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
+</blockquote>
+<h5 id="把设计变成真正的实现"><a href="#把设计变成真正的实现" class="headerlink" title="把设计变成真正的实现"></a>把设计变成真正的实现</h5><p>从Beverage类下手（抽象组、抽象装饰组）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    String description = <span class="string">&quot;Unknown Beverage&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> description;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  Beverage很简单。让我们也来实现Condiment（调料）抽象类，也就是装饰者类吧：</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CondimentDecorator</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> String <span class="title">getDescription</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现饮料（具体组件）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//浓缩咖啡</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Espresso</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Espresso</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        description = <span class="string">&quot;Espresso&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.99</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//首选咖啡</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HouseBlend</span> <span class="keyword">extends</span> <span class="title">Beverage</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HouseBlend</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        description = <span class="string">&quot;House Blend Coffee&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.89</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//DarkRoast深焙咖啡</span></span><br><span class="line"><span class="comment">//Decaf无咖啡因咖啡</span></span><br></pre></td></tr></table></figure>
+
+<p>调料代码(具体装饰者)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//摩卡是个装饰者</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mocha</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123;</span><br><span class="line">    <span class="comment">//用一个实例变量记录被装饰者</span></span><br><span class="line">    Beverage beverage;</span><br><span class="line">	<span class="comment">//将被装饰者存到实例变量中，也可以采用非构造器方式</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Mocha</span><span class="params">(Beverage beverage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.beverage = beverage;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写描述方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDescription</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> beverage.getDescription() + <span class="string">&quot;, Mocha&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//重写计算方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">cost</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">.20</span> + beverage.cost();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soy</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123; </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Whip</span> <span class="keyword">extends</span> <span class="title">CondimentDecorator</span> </span>&#123; </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实际调用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarbuzzCoffee</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        <span class="comment">//浓缩咖啡</span></span><br><span class="line">        Beverage beverage = <span class="keyword">new</span> Espresso();</span><br><span class="line">        System.out.println(beverage.getDescription() + <span class="string">&quot; $&quot;</span> + beverage.cost());</span><br><span class="line">        <span class="comment">//深焙咖啡双份摩卡，一层奶泡</span></span><br><span class="line">        Beverage beverage2 = <span class="keyword">new</span> DarkRoast();</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Whip(beverage2);</span><br><span class="line">        System.out.println(beverage2.getDescription()</span><br><span class="line">                + <span class="string">&quot; $&quot;</span> + beverage2.cost());</span><br><span class="line">        <span class="comment">//首选咖啡、加盐、加摩卡、加奶泡</span></span><br><span class="line">        Beverage beverage3 = <span class="keyword">new</span> HouseBlend();</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Soy(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Mocha(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Whip(beverage3);</span><br><span class="line">        System.out.println(beverage3.getDescription()</span><br><span class="line">                + <span class="string">&quot; $&quot;</span> + beverage3.cost());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="真实世界的装饰者：Java-I-O"><a href="#真实世界的装饰者：Java-I-O" class="headerlink" title="真实世界的装饰者：Java I/O"></a>真实世界的装饰者：Java I/O</h5><p>![](<a href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663059416910-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663059416910-2022-9-13</a> 16:56:57.png)</p>
+<p>我们会发现“输出”流的设计方式也是一样的。你可能还会发现Reader/Writer流（作为基于字符数据的输入输出）和输入流/输出流的类相当类似（虽然有一些小差异和不一致之处，但是相当雷同，所以以同样方式应该可以了解这些类）</p>
+<p><strong>缺点</strong>：利用装饰者模式，常常造成设计中有大量的小类，数量实在太多，可能会造成使用此API程序员的困扰</p>
+<p><em>举例实现</em>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LowerCaseInputStream</span> <span class="keyword">extends</span> <span class="title">FilterInputStream</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LowerCaseInputStream</span><span class="params">(InputStream in)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(in);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="keyword">super</span>.read();</span><br><span class="line">        <span class="keyword">return</span> (c == -<span class="number">1</span> ? c : Character.toLowerCase((<span class="keyword">char</span>) c));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">byte</span>[] b, <span class="keyword">int</span> offset, <span class="keyword">int</span> len)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="keyword">super</span>.read(b, offset, len);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = offset; i &lt; offset + result; i++) &#123;</span><br><span class="line">            b[i] = (<span class="keyword">byte</span>) Character.toLowerCase((<span class="keyword">char</span>) b[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InputTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> c;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//test.txt内容： I know the Decorator Pattern therefore I RULE!</span></span><br><span class="line">            InputStream in =</span><br><span class="line">                    <span class="keyword">new</span> LowerCaseInputStream(</span><br><span class="line">                            <span class="keyword">new</span> BufferedInputStream(</span><br><span class="line">                                    <span class="keyword">new</span> FileInputStream(<span class="string">&quot;test.txt&quot;</span>)));</span><br><span class="line">            <span class="keyword">while</span> ((c = in.read()) &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.print((<span class="keyword">char</span>) c);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//打印出 i know the decorator pattern therefore i rule!</span></span><br><span class="line">            in.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
+<li><strong>OO基础</strong><ul>
+<li><strong>抽象</strong></li>
+<li><strong>封装</strong></li>
+<li><strong>多态</strong></li>
+<li><strong>继承</strong></li>
+</ul>
+</li>
+<li><strong>OO原则</strong><ul>
+<li><strong>封装变化</strong></li>
+<li><strong>多用组合，少用继承</strong></li>
+<li><strong>针对接口编程，不针对实现编程</strong></li>
+<li><strong>为交互对象之间的松耦合设计而努力</strong></li>
+<li><strong>对扩展开放，对修改关闭</strong></li>
+</ul>
+</li>
+<li><strong>OO模式</strong><ul>
+<li><strong>【策略模式】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></li>
+<li><strong>【观察者模式】 ——在对象之间定义一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象都会收到通知，并自动更新</strong></li>
+<li><strong>【装饰者模式】——动态地将责任附加到对象上。想要扩展功能，装饰者提供有别于继承的另一种选择</strong></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>要点：</strong></p>
+<ul>
+<li>继承属于扩展形式之一，但不见得是达到弹性设计的最佳方式。</li>
+<li>在我们的设计中，应该允许行为可以被扩展，而无须修改现有的代码。</li>
+<li>组合和委托可用于在运行时动态地加上新的行为。- 除了继承，装饰者模式也可以让我们扩展行为。</li>
+<li>装饰者模式意味着一群装饰者类，这些类用来包装具体组件。</li>
+<li>装饰者类反映出被装饰的组件类型（事实上，他们具有相同的类型，都经过接口或继承实现）。</li>
+<li>装饰者可以在被装饰者的行为前面与/或后面加上自己的行为，甚至将被装饰者的行为整个取代掉，而达到特定的目的。</li>
+<li>你可以用无数个装饰者包装一个组件。</li>
+<li>装饰者一般对组件的客户是透明的，除非客户程序依赖于组件的具体类型。</li>
+<li>装饰者会导致设计中出现许多小对象，如果过度使用，会让程序变得很复杂。</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>观察者模式</title>
     <url>/2022/08/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="观察者-Observer-模式"><a href="#观察者-Observer-模式" class="headerlink" title="观察者(Observer)模式"></a>观察者(Observer)模式</h3><blockquote>
@@ -189,7 +278,7 @@
   </entry>
   <entry>
     <title>设计模式简介</title>
-    <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AE%80%E4%BB%8B-/</url>
+    <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><strong>共享模式词汇</strong></p>
 <blockquote>
 <p>当我们使用模式名称和其他开发人员或者开发团队沟通时,我们之间交流的不只是模式名称,而是一整套模式背后所象征的质量 、特性、约束.</p>
