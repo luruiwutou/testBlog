@@ -99,7 +99,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.6k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -123,10 +123,10 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h3><h4 id="引入示例"><a href="#引入示例" class="headerlink" title="引入示例"></a>引入示例</h4><p>![扩展示例](<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13</a> 13:54:16.png)</p>
+  <h3 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h3><h4 id="引入示例"><a href="#引入示例" class="headerlink" title="引入示例"></a>引入示例</h4><p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13%2013:54:16.png" alt="扩展示例"></p>
 <p><strong>错误示例：</strong></p>
 <p>对每种子类都需要不同的计算方式，然后导致“类爆炸”、设计死板、基类加入的新功能并不适用于所有的子类。</p>
-<p>![类继承错误示例](<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048634444-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048634444-2022-9-13</a> 13:57:15.png)</p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048634444-2022-9-13%2013:57:15.png" alt="类继承错误示例"></p>
 <p><strong>引入设计原则：类应该对扩展开放，对修改关闭。</strong></p>
 <blockquote>
 <p>遵循开放-关闭原则，通常会引入新的抽象层次，增加代码的复杂度，无需把设计的每个部分都这么设计，只需要将设计中最有可能改变的地方，去应用开放-关闭原则</p>
@@ -139,8 +139,8 @@
 <li>调用cost()方法，并依赖委托（delegate）将调料价格加上去</li>
 </ol>
 <p><strong>图示：</strong></p>
-<p>![](<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663055989692-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663055989692-2022-9-13</a> 15:59:50.png)</p>
-<p>![](<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663056043454-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663056043454-2022-9-13</a> 16:00:44.png)</p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663055989692-2022-9-13%2015:59:50.png"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663056043454-2022-9-13%2016:00:44.png"></p>
 <h4 id="定义装饰者模式"><a href="#定义装饰者模式" class="headerlink" title="定义装饰者模式"></a>定义装饰者模式</h4><blockquote>
 <p><strong>装饰者模式</strong>动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。</p>
 </blockquote>
@@ -156,7 +156,7 @@
 <p>实际调用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StarbuzzCoffee</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        <span class="comment">//浓缩咖啡</span></span><br><span class="line">        Beverage beverage = <span class="keyword">new</span> Espresso();</span><br><span class="line">        System.out.println(beverage.getDescription() + <span class="string">&quot; $&quot;</span> + beverage.cost());</span><br><span class="line">        <span class="comment">//深焙咖啡双份摩卡，一层奶泡</span></span><br><span class="line">        Beverage beverage2 = <span class="keyword">new</span> DarkRoast();</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Mocha(beverage2);</span><br><span class="line">        beverage2 = <span class="keyword">new</span> Whip(beverage2);</span><br><span class="line">        System.out.println(beverage2.getDescription()</span><br><span class="line">                + <span class="string">&quot; $&quot;</span> + beverage2.cost());</span><br><span class="line">        <span class="comment">//首选咖啡、加盐、加摩卡、加奶泡</span></span><br><span class="line">        Beverage beverage3 = <span class="keyword">new</span> HouseBlend();</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Soy(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Mocha(beverage3);</span><br><span class="line">        beverage3 = <span class="keyword">new</span> Whip(beverage3);</span><br><span class="line">        System.out.println(beverage3.getDescription()</span><br><span class="line">                + <span class="string">&quot; $&quot;</span> + beverage3.cost());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="真实世界的装饰者：Java-I-O"><a href="#真实世界的装饰者：Java-I-O" class="headerlink" title="真实世界的装饰者：Java I/O"></a>真实世界的装饰者：Java I/O</h5><p>![](<a target="_blank" rel="noopener" href="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663059416910-2022-9-13">https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663059416910-2022-9-13</a> 16:56:57.png)</p>
+<h5 id="真实世界的装饰者：Java-I-O"><a href="#真实世界的装饰者：Java-I-O" class="headerlink" title="真实世界的装饰者：Java I/O"></a>真实世界的装饰者：Java I/O</h5><p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663059416910-2022-9-13%2016:56:57.png"></p>
 <p>我们会发现“输出”流的设计方式也是一样的。你可能还会发现Reader/Writer流（作为基于字符数据的输入输出）和输入流/输出流的类相当类似（虽然有一些小差异和不一致之处，但是相当雷同，所以以同样方式应该可以了解这些类）</p>
 <p><strong>缺点</strong>：利用装饰者模式，常常造成设计中有大量的小类，数量实在太多，可能会造成使用此API程序员的困扰</p>
 <p><em>举例实现</em>：</p>
