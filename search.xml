@@ -1,6 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>工厂模式</title>
+    <url>/2022/10/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><blockquote>
+<p>除了<code>new</code>操作符之外，还有更多制造对象的方法，我们了解到实例化这个活动不应该总是公开地进行，认识到初始化经常造成“耦合”问题，这次我们将用工厂模式帮你从复杂的依赖中脱困</p>
+</blockquote>
+<h5 id="new有什么不对劲？"><a href="#new有什么不对劲？" class="headerlink" title="new有什么不对劲？"></a><code>new</code>有什么不对劲？</h5><p>在技术上，<code>new</code>没有错，毕竟是Java的基础部分，真正的因素是“改变”。当针对接口编程，可以隔离掉以后可能发生的一大堆改变，为什么呢？如果代码针对接口而写，那么通过多态，它可以与任何新类实现该接口。但是，当代码使用大量的具体类时，等于是自找麻烦，因为一旦加入新的具体类，就必须改变代码。也就是说，你的代码并非“对修改关闭”。想用新的具体类型来扩展代码，必须重新打开它。</p>
+<p>例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Duck duck =<span class="keyword">new</span> MallardDuck();</span><br><span class="line"><span class="comment">//相关具体类</span></span><br><span class="line">Duck duck</span><br><span class="line"><span class="keyword">if</span>（picnic）&#123;</span><br><span class="line">	duck = <span class="keyword">new</span> MallardDuck();</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(hunting)&#123;</span><br><span class="line">	duck = <span class="keyword">new</span> DecoyDuck();</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>...</span><br><span class="line"></span><br><span class="line"><span class="comment">//导致代码缺乏弹性</span></span><br></pre></td></tr></table></figure>
+
+<p>所以，该怎么办？OO设计原则第一个原则<strong>“找出会变化的方面，把它们从不变的部分分离出来”</strong></p>
+<h5 id="识别变化的方面"><a href="#识别变化的方面" class="headerlink" title="识别变化的方面"></a>识别变化的方面</h5><p>引入个简单工厂</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Pizza</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bake</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">box</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">PizzaStore</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SimplePizzaFactory factory;</span><br><span class="line">    <span class="function">Pizza <span class="title">orderPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Pizza pizza;</span><br><span class="line">        <span class="comment">//工厂实例化pizza类</span></span><br><span class="line">        pizza=factory.createPizza(type);</span><br><span class="line">        pizza.prepare();</span><br><span class="line">        pizza.bake();</span><br><span class="line">        pizza.cut();</span><br><span class="line">        pizza.box();</span><br><span class="line">        <span class="keyword">return</span> pizza;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimplePizzaFactory</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Pizza pizza = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (type.equals(<span class="string">&quot;cheese&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> CheesePizza();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equals(<span class="string">&quot;clam&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> ClamPizza();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equals(<span class="string">&quot;veggie&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> VeggiePizza();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (type.equals(<span class="string">&quot;chicken&quot;</span>)) &#123;</span><br><span class="line">            pizza = <span class="keyword">new</span> ChickenPizza();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pizza;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单工厂其实不是一个设计模式，反而比较像是一种编程习惯。但由于经常被使用，有些人会把其误认为工厂模式。</p>
+<h5 id="声明一个工厂方法"><a href="#声明一个工厂方法" class="headerlink" title="声明一个工厂方法"></a>声明一个工厂方法</h5><p>原本时又一个对象负责所有具体类的实例化，现在通过对<code>PizzaStore</code>做一个小转变，变成由一群子类来负责实例化。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> class <span class="title">PizzaStore</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="function">Pizza <span class="title">orderPizza</span><span class="params">(String type)</span> </span>&#123;</span><br><span class="line">        Pizza pizza;</span><br><span class="line">        <span class="comment">//工厂实例化pizza类</span></span><br><span class="line">        pizza= createPizza(type);</span><br><span class="line">        pizza.prepare();</span><br><span class="line">        pizza.bake();</span><br><span class="line">        pizza.cut();</span><br><span class="line">        pizza.box();</span><br><span class="line">        <span class="keyword">return</span> pizza; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1.abstract工厂方法时抽象的，所有依赖子类来处理对象的创建</span></span><br><span class="line">    <span class="comment">//2.Pizza 工厂方法必须返回一个产品，超类中定义的方法，通常使用到工厂方法的返回值。</span></span><br><span class="line">    <span class="comment">//3.createPizza 工厂方法将客户（也就是超类中的代码【orderPizza】）和市级创建具体产品的代码分隔开来。</span></span><br><span class="line">    <span class="comment">//4.type 工厂和方法可能需要参数（也可能不需要）来指定所要的产品。</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> Pizza <span class="title">createPizza</span><span class="params">(String type)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="认识工厂方法模式"><a href="#认识工厂方法模式" class="headerlink" title="认识工厂方法模式"></a>认识工厂方法模式</h5><p><strong>组成元素：</strong></p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1666079251447-2022-10-18_15:47:32.png"></p>
+<p><strong>创建者</strong>和<strong>产品</strong>，有另一个观点：<em>平行的类层级</em></p>
+<p>我们可以看到，将一个<code>orderPizza()</code>方法和一个工厂方法联合起来，就可以成为一个框架。除此之外，工厂方法将生产只是封装进各个创建者，这样的做法也可以被视为是一个框架。</p>
+<h4 id="定义工厂方法模式"><a href="#定义工厂方法模式" class="headerlink" title="定义工厂方法模式"></a>定义工厂方法模式</h4><p><strong>工厂方法模式</strong><u>定义了一个创建对象的接口，但是由子类决定要实例化的类是哪一个，工厂方法让类把实例化推迟到子类。</u></p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1666144415751-2022-10-19_09:53:35.png"></p>
+<blockquote>
+<p>避免误区：工厂方法让子类决定要实例化的类是哪一个.不要理解错误,所谓的”决定”,并不是指模式允许子类本身运行时做的决定,而是指在编写创建者类时,不需要知道实际创建的产品是哪一个,选择了使用哪一个子类,自然就决定了实际创建的产品是什么.</p>
+</blockquote>
+<h5 id="问答"><a href="#问答" class="headerlink" title="问答"></a>问答</h5><ol>
+<li>当只有一个<code>ConcreteCreator</code>的时候,工厂模式有什么优点?</li>
+</ol>
+<p>​        尽管只有一个具体的创建者,工厂方法模式依然很有用,因为它帮助我们将产品的”实现”从”使用”中解耦.如果增加产品或者改变产品的实现,<code>Creator</code>并不会收到影响</p>
+<ol start="2">
+<li><p>工厂方法和创建者是否总是抽象的?</p>
+<p>不,可以定义一个默认的工厂方法来产生某些具体的产品,这么依赖,即使创建者没有任何子类,依然可以创建产品.</p>
+</li>
+<li><p>简单工厂和工厂方法之间的差异?</p>
+<p>简单工厂把全部的事情在一个地方都处理完了,然而工厂方法确实创建一个框架,让子类决定要如何去实现.简单工厂的做法,可以将对象的创建封装起来,但是简单工厂不具备工厂方法的弹性,因为简单工厂不能变更正在创建的产品.</p>
+</li>
+</ol>
+<h5 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h5><p><strong>设计原则:<em>要依赖抽象,不要依赖具体类</em></strong></p>
+<ul>
+<li><p><em>依赖倒置原则,究竟倒置在哪里?</em></p>
+<p><strong>倒置你的思考方式</strong>.去抽象你最终要产生的产品,而不是从如何产生产品开始.</p>
+</li>
+</ul>
+<p><strong>指导方针</strong>(不需要随时都要遵循这个原则,而是应该尽量达到这个原则)</p>
+<ul>
+<li><p>变量不可以持有具体类的引用.</p>
+<p>​    如果使用<code>new</code>,就会持有具体类的引用,可以用工厂来避开这样的做法.</p>
+</li>
+<li><p>不要让类派生自具体类.</p>
+<p>​    如果派生自具体类,你就会依赖具体类,请派生自一个抽象(接口或抽象类).</p>
+</li>
+<li><p>不要覆盖基类中已经实现的方法.</p>
+<p>​    如果覆盖基类以实现的方法,那么你的基类就不是一个真正合适被继承的抽象.基类中以实现的方法,应该由所有的子类共享.</p>
+</li>
+</ul>
+<h5 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h5><p><strong>定义:抽象工厂模式提供一个接口,用于创建相关或依赖对象的家族,而不需要明确指定具体类</strong></p>
+<p>抽象工厂允许客户使用抽象的接口来创建一组相关的产品,而不需要知道(或关心)实际产出的具体产品时什么.这样一来,客户就从具体的产品中被解耦.如下列类图:</p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1666161421015-2022-10-19_14:37:01.png"></p>
+<p><strong>示例:</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//抽象工厂</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PizzaIngredientFactory</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dough <span class="title">createDough</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Sauce <span class="title">createSauce</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Cheese <span class="title">createCheese</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Clams <span class="title">createClams</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RegionIngredientFactory</span> <span class="keyword">implements</span> <span class="title">PizzaIngredientFactory</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Dough <span class="title">createDough</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ThinCrustDough();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Sauce <span class="title">createSauce</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> MarinaraSauce();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Cheese <span class="title">createCheese</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ReggianoCheese();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Clams <span class="title">createClams</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FreshClams();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Pizza</span> </span>&#123;</span><br><span class="line">    String name;</span><br><span class="line">    Dough dough;</span><br><span class="line">    Sauce sauce;</span><br><span class="line">    Cheese cheese;</span><br><span class="line">    Clams clams;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bake</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cut</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">box</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CheesePizza</span> <span class="keyword">extends</span> <span class="title">Pizza</span> </span>&#123;</span><br><span class="line">    PizzaIngredientFactory ingredientFactory;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CheesePizza</span><span class="params">(PizzaIngredientFactory ingredientFactory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.ingredientFactory = ingredientFactory;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;准备：&quot;</span> + name);</span><br><span class="line">        <span class="comment">//dough 把客户提供的属性在这里设置为传入的工厂类型产生的属性值</span></span><br><span class="line">        <span class="comment">//ingredientFactory 属性工厂，客户不在乎用什么工厂，只需要能提供属性的赋值就行</span></span><br><span class="line">        <span class="comment">//createDough 返回这种属性值，根据传入的工厂实现不同的属性值</span></span><br><span class="line">        dough = ingredientFactory.createDough();</span><br><span class="line">        cheese = ingredientFactory.createCheese();</span><br><span class="line">        sauce = ingredientFactory.createSauce();</span><br><span class="line">        clams = ingredientFactory.createClams();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>工厂方法是不是潜伏在抽象工厂里面?</strong><br>是的,抽象工厂的方法经常以工厂方法的方式实现.抽象工厂的任务时定义一个负责创建一组产品的接口.这个接口内的每个方法都负责创建一个具体产品,同事我们利用实现抽象工厂的子类来提供这些具体的做法.所以在抽象工厂方法实现生产方法时相当自然的做法.</p>
+<p><strong>抽象工厂和工厂方法的异同</strong>:</p>
+<ul>
+<li>抽象工厂和工厂方法都是负责创建对象,但是工厂方法用的是继承,而抽象工厂是通过对象的组合实现.<ul>
+<li>意味着工厂方法创建对象需要扩展一个类,并覆盖它的工厂方法(通过子类来创建对象,将客户从具体类型中解耦),</li>
+<li>抽象工厂则是提供一个用来创建一个产品家族的抽象类型,这个类型的子类定义了产品被产生的方法.要想使用这个工厂,必须先实例化它,然后将它传入一些针对抽象类型所些的代码中,拥有可以把一群相关产品集合起来的优点.但是当加入一个新产品(拓展这组相关的产品)就得改写每个子类的接口,这也算是缺点之一.</li>
+</ul>
+</li>
+<li>抽象工厂经常使用工厂方法来实现其中的具体工厂来创建产品</li>
+<li>需要创建产品家族和想让制造的相关产品集合起来时,可以使用抽象工厂.</li>
+</ul>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1666167688998-2022-10-19_16:21:29.png"></p>
+<p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1666167745752-2022-10-19_16:22:26.png"></p>
+<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
+<li><p><strong>OO基础</strong></p>
+<ul>
+<li><strong>抽象</strong></li>
+<li><strong>封装</strong></li>
+<li><strong>多态</strong></li>
+<li><strong>继承</strong></li>
+</ul>
+</li>
+<li><p><strong>OO原则</strong></p>
+<ul>
+<li><strong>封装变化</strong></li>
+<li><strong>多用组合，少用继承</strong></li>
+<li><strong>针对接口编程，不针对实现编程</strong></li>
+<li><strong>为交互对象之间的松耦合设计而努力</strong></li>
+<li><strong>对扩展开放，对修改关闭</strong></li>
+<li><strong>依赖抽象,不要依赖具体类</strong></li>
+</ul>
+</li>
+<li><p><strong>OO模式</strong></p>
+<ul>
+<li><p><strong>【策略模式】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></p>
+</li>
+<li><p><strong>【观察者模式】 ——在对象之间定义一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象都会收到通知，并自动更新</strong></p>
+</li>
+<li><p><strong>【装饰者模式】——动态地将责任附加到对象上。想要扩展功能，装饰者提供有别于继承的另一种选择</strong></p>
+</li>
+<li><p><strong>【抽象工厂模式】——提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</strong></p>
+</li>
+<li><p><strong>【工厂方法模式】——定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类把实例化推迟到子类。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>要点：</strong></p>
+<ul>
+<li>所有的工厂都是用来封装对象的创建。</li>
+<li>简单工厂，虽然不是真正的设计模式，但仍不失为一个简单的方法，可以将客户程序从具体类解耦。</li>
+<li>工厂方法使用继承：把对象的创建委托给子类，子类实现工厂方法来创建对象。</li>
+<li>抽象工厂方法使用对象组合：对象的创建被实现在工厂接口所暴露出来的方法中。</li>
+<li>所有工厂模式都通过减少应用程序和具体类之间的依赖促进松耦合。</li>
+<li>工厂方法允许类将实例化推迟到子类进行。</li>
+<li>抽象工厂创建相关的对象家族，而不需要依赖它们的具体类。</li>
+<li>依赖倒置原则，知道我们避免依赖具体实现类型，而要尽量依赖抽象。</li>
+<li>工厂是很有威力的技巧，帮助我们针对抽象编程，而不要针对具体类编程。</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>装饰者模式</title>
     <url>/2022/09/12/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h3><h4 id="引入示例"><a href="#引入示例" class="headerlink" title="引入示例"></a>引入示例</h4><p><img src="https://fastly.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1663048455386-2022-9-13%2013:54:16.png" alt="扩展示例"></p>
