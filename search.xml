@@ -1,6 +1,540 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/12/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>算法图解小结part1-3</title>
+    <url>/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/</url>
+    <content><![CDATA[<h2 id="算法小结"><a href="#算法小结" class="headerlink" title="算法小结"></a>算法小结</h2><h3 id="PART-1-算法简介"><a href="#PART-1-算法简介" class="headerlink" title="PART 1 算法简介"></a>PART 1 算法简介</h3><ul>
+<li>二分查找的速度比简单查找快得多</li>
+<li>O(log n)比O(n)快，需要搜索的元素越多，前者比后者快的越多</li>
+<li>算法运行时间并不以秒为单位</li>
+<li>算法运行时间是从其增速的角度度量的</li>
+<li>算法运行时间用大O表示法表示</li>
+</ul>
+<h3 id="PART-2-选择排序"><a href="#PART-2-选择排序" class="headerlink" title="PART 2 选择排序"></a>PART 2 选择排序</h3><ul>
+<li>计算机内存犹如一大堆抽屉</li>
+<li>需要存储多个元素时，可使用数组或链表</li>
+<li>数组的元素都在一起</li>
+<li>链表的元素是分开的，其中每个元素都存储了下一个元素的地址</li>
+<li>数组的读取速度很快，O(1)</li>
+<li>链表的插入和删除速度很快</li>
+<li>在同一个数组中，所有元素的类型都必须相同（都为int、double等）</li>
+</ul>
+<h3 id="PART-3-递归"><a href="#PART-3-递归" class="headerlink" title="PART 3 递归"></a>PART 3 递归</h3><ul>
+<li>递归指的是调用自己的函数</li>
+<li>每个递归函数都有两个条件：基线条件和递归条件</li>
+<li>栈有两种操作：压入和弹出</li>
+<li>所有函数调用都进入调用栈</li>
+<li>调用栈可能很长，这将占用大量的内存（可使用尾递归，避免栈溢出）</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法图解part4</title>
+    <url>/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/</url>
+    <content><![CDATA[<h3 id="算法图解小结part4"><a href="#算法图解小结part4" class="headerlink" title="算法图解小结part4"></a>算法图解小结part4</h3><h4 id="分而治之（divide-and-conquer，D-amp-C）"><a href="#分而治之（divide-and-conquer，D-amp-C）" class="headerlink" title="分而治之（divide and conquer，D&amp;C）"></a>分而治之（divide and conquer，D&amp;C）</h4><blockquote>
+<p>一种著名的递归式问题解决方法</p>
+</blockquote>
+<p>使用D&amp;C解决问题的过程包括两个步骤</p>
+<ul>
+<li>找出极基线条件，这种条件必须尽可能简单。</li>
+<li>不断将问题分拣（或者说缩小规模），直至符合基线条件。</li>
+</ul>
+<h4 id="快速排序代码demo"><a href="#快速排序代码demo" class="headerlink" title="快速排序代码demo"></a>快速排序代码demo</h4><blockquote>
+<p>归纳证明：基线条件和归纳条件。<br>对于快速排序，在基线条件中，证明这种算法对空数组或包含一个元素的数组管用。在归纳条件中，证明如果快速排序对包含一个元素的数组管用，对包含两个元素的数组也将管用，对包含三个元素的数组也将管用，以此类推。因此可以说，快速排序对任何长度的数组都管用。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> arr;<span class="comment">//基线条件：为空或者只包含一个元素的数组是“有序”的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = arr[<span class="number">0</span>];<span class="comment">//选择基准值</span></span><br><span class="line">            <span class="keyword">return</span> Arrays.concatenate(Arrays.append(quickivotArr(pivot, arr), pivot) ,quickivot(gtPipivot, arr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**、</span></span><br><span class="line"><span class="comment">     * 获取所有小于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] ltPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取所有大于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] gtPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>D&amp;C将问题逐步分解。使用D&amp;C处理列表时，基线条件很可能是空数组或只包含一个元素的数组。</li>
+<li>实现快速排序时，请随机地选择用作基准值的元素。快速排序的平均运行时间为O(log n)。</li>
+<li>大O表示法的常量有时候事关重大，这就是快速排序比合并排序快的原因所在。（它们的运行时间都是n*log n）</li>
+<li>比较简单查找和二分查找时，常量几乎无关紧要，因为列表很长，O(log n)的速度比O(n)快得多。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法图解part5</title>
+    <url>/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/</url>
+    <content><![CDATA[<h2 id="算法图解part5"><a href="#算法图解part5" class="headerlink" title="算法图解part5"></a>算法图解part5</h2><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><blockquote>
+<p>你几乎不用自己去实现散列表，因为你使用的编程语言提供了散列表实现。你可以各种语言提供的散列表，并假定能够获得平均情况下的性能：<strong>常量时间</strong></p>
+</blockquote>
+<p>散列表可以理解为Java语言中的hashmap，它拥有几个特征：</p>
+<ul>
+<li>散列函数<ul>
+<li>必须满足的一些要求<ul>
+<li>他必须是一致的。每次相同的输入必须得到相同的结果。</li>
+<li>它应将不同的输入映射到不同的数字。（此时就引入了下一个环节的<strong>冲突</strong>）</li>
+<li>它知道数组的大小，只会返回有效的索引</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>应用案例<ul>
+<li>将散列表用于查找/模拟映射关系<ul>
+<li>电话簿</li>
+<li>NDS解析（域名转换为IP）</li>
+</ul>
+</li>
+<li>防止重复<ul>
+<li>投票</li>
+</ul>
+</li>
+<li>将散列表用作缓存/记住数据<ul>
+<li>Web缓存常用数据，用以加速网络加载，提高用户体验</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><blockquote>
+<p>前面提到的散列函数总是将不同的键映射到数组的不同位置，实际上是几乎不可能的。</p>
+</blockquote>
+<p>如果两个键映射到一个位置的时候，就在这个位置存储一个链表</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[k]-&gt;[]-&gt;[]-[] //链表</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">数组</span><br></pre></td></tr></table></figure>
+
+<p>经验教训：</p>
+<ul>
+<li><strong>散列函数很重要</strong>。前面的散列函数将所有的键将所有的键都映射到一个位置，而理想的情况是，散列函数将键均匀地映射到散列表的不同位置。</li>
+<li>如果散列表存储的链表很长，散列表的速度将急剧下降。然而，如果使用的散列函数很好，这些链表就不会很长！</li>
+</ul>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>散列表的性能</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>散列表平均情况(常量时间)</th>
+<th>散列表最糟情况</th>
+<th>数组</th>
+<th>链表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查找</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>插入</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody></table>
+<p>在平均情况下，散列表的查找（获取给定索引处的值）速度和数组一样快，而插入和删除的速度和链表一样快，因此它兼具两者的优点！</p>
+<p>但是在最糟情况下，散列表的各种操作的速度都很慢，因此使用散列表时，避开最糟情况至关重要。</p>
+<p>如何避免：</p>
+<ul>
+<li>较低的填装因子；<ul>
+<li>散列表包含的元素数/位置总数。</li>
+<li>填装因子越低，发生冲突的可能性越小。散列表的性能越高。</li>
+<li>调整散列表长度的工作开销很大，但是平均而言，即使这样也不影响散列表操作时间O(1)。</li>
+</ul>
+</li>
+<li>良好的散列函数。<ul>
+<li>SHA函数等等，可后续了解</li>
+</ul>
+</li>
+</ul>
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>散列表是一种功能强大的数据结构，其操作速度快，还能让你以不同的方式建立数据模型。</p>
+<ul>
+<li>你可以结合散列函数和数组来创建散列表。</li>
+<li>冲突很糟糕，你应使用可以最大限度减少冲突的散列函数。</li>
+<li>散列表的查找、插入和删除速度都非常快。</li>
+<li>散列表适合用于模拟映射关系。</li>
+<li>一旦填装因子超过0.7，就该调整散列表的长度。</li>
+<li>散列表可用于缓存数（例如，在Web服务器）。</li>
+<li>散列表非常适合用于防止重复。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法图解part6</title>
+    <url>/2021/12/28/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part6/</url>
+    <content><![CDATA[<h2 id="算法图解part6"><a href="#算法图解part6" class="headerlink" title="算法图解part6"></a>算法图解part6</h2><h3 id="图是什么"><a href="#图是什么" class="headerlink" title="图是什么"></a>图是什么</h3><p><strong>图模拟一组链接</strong></p>
+<p>图由节点和边组成。一个节点可能与众多节点直接相连，这些节点被称为邻居。</p>
+<h3 id="广度优先搜索———图算法"><a href="#广度优先搜索———图算法" class="headerlink" title="广度优先搜索———图算法"></a>广度优先搜索———图算法</h3><blockquote>
+<p>广度优先搜索让你能够找出两样东西之间的最短距离，不过最短距离的含义有很多！</p>
+</blockquote>
+<p>使用广度优先搜索可以:</p>
+<ul>
+<li> 编写国际跳棋AI，计算最少走多少步就可获胜；</li>
+<li>编写拼写检查器，计算最少编辑多少个地方就可以将错拼的单词改写成正确的单词，如将READED改为READER需要编辑一个地方；</li>
+<li>根据你的人际关系网格找到关系最近的医生。</li>
+</ul>
+<p>可以帮助回答两类问题</p>
+<ol>
+<li>从节点A出发，有前往节点B的路径吗？</li>
+<li>从节点A出发，前往B的哪条路径最短？</li>
+</ol>
+<p>此时我们需要确定顺序时（满足第二类问题），需要按添加顺序进行检查时就引入了<strong>队列（<code>queue</code>）</strong></p>
+<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>队列类似于栈，你不能随机访问队列中的元素。它只支持两种操作：<strong>入队</strong>和<strong>出队</strong></p>
+<p>队列是一种<strong>先进先出（First In First Out，FIFO）</strong>的数据结构，而栈式一种<strong>后进后出（Last In First Out,  LIFO）</strong>的数据结构</p>
+<h4 id="实现图"><a href="#实现图" class="headerlink" title="实现图"></a>实现图</h4><p>图由多个节点组成，内阁节点都与临近节点相连，如果表示类似于“你-&gt;Bob”这样的关系呢？</p>
+<p>此时引入上期了解过的<strong>散列表</strong></p>
+<table>
+    <tr>         
+        <td rowspan="3">你</td><td>ALICE</td> 
+    </tr>
+    <tr>         
+        <td>CLIARE</td>    
+    </tr>    
+    <tr>         
+        <td>BOB</td>
+    </tr>
+</table>
+
+<p> 表示这种映射关系的Python代码入下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph&#123;<span class="string">&quot;you&quot;</span>&#125; = &#123;<span class="string">&quot;alice&quot;</span>,<span class="string">&quot;bob&quot;</span>,<span class="string">&quot;cliare&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同理，你的邻居的邻居也可如此表示</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph&#123;&quot;you&quot;&#125; = [&quot;alice&quot;,&quot;bob&quot;,&quot;cliare&quot;]</span><br><span class="line">graph&#123;&quot;alice&quot;&#125; = [&quot;peggy&quot;]</span><br><span class="line">graph&#123;&quot;bob&quot;&#125; = [&quot;anuj&quot;,&quot;peggy&quot;]</span><br><span class="line">graph&#123;&quot;cliare&quot;&#125; = &quot;thom&quot;,&quot;jonny&quot;]</span><br><span class="line">graph&#123;&quot;anuj&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;peggy&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;thom&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;jonny&quot;&#125; = []</span><br></pre></td></tr></table></figure>
+
+<p>Anuj、Peggy、Thom和Jonny都没有邻居，那这种情况叫什么？</p>
+<p><strong>有向图：</strong>有指向他们的箭头，但是没有从他们出发指向其他人的箭头，被称为有向图（directed graph）</p>
+<p><strong>无向图：</strong>没有箭头，直接相连的节点互为邻居。</p>
+<h5 id="如何实现查找自己的关系网？"><a href="#如何实现查找自己的关系网？" class="headerlink" title="如何实现查找自己的关系网？"></a>如何实现查找自己的关系网？</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">//示例</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span>(<span class="params">name</span>)</span></span><br><span class="line"><span class="function">	<span class="title">search_queue</span> = <span class="title">deque</span>()//创建一个队列</span></span><br><span class="line"><span class="function">    <span class="title">search_queue</span> += <span class="title">graph</span>[<span class="title">name</span>]//将你的邻居加入队列</span></span><br><span class="line"><span class="function">    <span class="title">searched</span> =[] //这个数组记录用于检查过的人</span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">search_queue</span>:</span></span><br><span class="line">        person = search_queue.popleft()//取出其中的第一个人</span><br><span class="line">        <span class="keyword">if</span> person <span class="keyword">not</span> <span class="keyword">in</span> searched: //仅当这个人没检查过时才检查</span><br><span class="line">            <span class="keyword">if</span> penson_is_you_need(person)://检查这个人是否是你需要的</span><br><span class="line">                <span class="built_in">print</span> person + <span class="string">&quot; is you need!&quot;</span> //是你需要的人</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span> //找到了 终止</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                search_queue +=graph[person] //不是你需要的，将这个人的邻居加入搜索队列</span><br><span class="line">                searched.append(person) //标记为检查过</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">False</span> //你的关系网里没有你需要的人</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">search(<span class="string">&quot;you&quot;</span>)</span><br><span class="line">         </span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h4><p>因为你沿着每条边前行，因此运行时间至少为O(边数)，加上使用了队列，其中包含要检查的每个人，将每个人添加到队列需要的时间是固定的即为O(1)，因此对每个人都这样做的总时间为O(人数)。</p>
+<p>所以，广度优先搜索的运行时间为O(人数+边数)，通常写作O(V+E)，其中V为顶点（vertice）数，E为边数。</p>
+<h6 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h6><p>如果任务A以来任务B，在列表中任务A就必须在任务B后面，这被称为<strong>拓扑排序</strong>，使用它可根据图创建一个有序列表，类似于“家谱”，这种图被称为树。树是有一种特殊的图，其中没有往后指的边。</p>
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>广度优先搜索指出是否有从A到B的路径。</li>
+<li>如果有，广度优先搜索将找出最短路径。</li>
+<li>面临类似于寻找最短路径的问题时，可尝试使用图来建立模型，再使用广度优先搜索来解决问题。</li>
+<li>有向图中的边为箭头，箭头的方向指定了关系的方向，例如，rama-&gt;adit表示rama欠adit钱。</li>
+<li>无向图中的边不带箭头，其中的关系是双向的，例如，ross - rachel表示“ross与rachel约会，而rachel也与ross约会“。</li>
+<li>队列是先进先出（FIFO）的，栈式后进先出（LIFO）的</li>
+<li>你需要按加入顺序检查搜索列表中的人，否则找到的就不是最短路径，因此搜索列表必须是队列。</li>
+<li>对于检查过的人，务必不要再去检查，否则可能导致无限循环。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法图解part7</title>
+    <url>/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/</url>
+    <content><![CDATA[<h2 id="算法图解part7"><a href="#算法图解part7" class="headerlink" title="算法图解part7"></a>算法图解part7</h2><h3 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h3><blockquote>
+<p>在广度优先搜索中，你能找到A到B点最短的路径。</p>
+<p>但是在路径上加上时间<strong>权重</strong>后，此时我们需要找出A到B最快的路径怎么办呢，这里就引入了狄克斯特拉算法（Dijkstra‘s algorithm）。</p>
+</blockquote>
+<hr>
+<p>此算法包含四个步骤：</p>
+<ol>
+<li>找出“最便宜”的节点，即可在最短时间内到达的节点。</li>
+<li>对于该节点的邻居，检查是否有前往它们的更短路径，如果有，则更新其开销</li>
+<li>重复这个过程，直到对图中的每个节点（终点不需要）都这样做了</li>
+<li>计算最终路径。</li>
+</ol>
+<p>狄克斯特拉算法用于每条边都有关联数字的图，这些数字称为权重，带权重的图称为 <strong>加权图（weighted graph）</strong>，不带权重的称为   <strong>非加权图（unweighted graph）</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E6%9D%83%E9%87%8D%E5%9B%BE-2022-1-21%2010:44:27.png" alt="加权图"></p>
+<p>但是如果图中出现了带环的，那么我们可能出现绕环的行为，所以说，狄克斯特拉算法只适用于 <strong>有向无环图（directed acyclic graph，DAG）</strong></p>
+<p>算法背后关键的理念：<strong>找出图中最便宜的节点，并确保没有到该节点的更便宜的路径</strong></p>
+<p>**<u>如果有负权边，就不能使用狄克斯特拉算法</u>**，因为负权边会导致这种算法不管用。当有负权边的图中，可以使用另一种算法—— <em>贝尔曼 - 福德算法（Bellman-Ford algorithm）</em>，这里不做介绍。</p>
+<h4 id="实现——以下图为例子"><a href="#实现——以下图为例子" class="headerlink" title="实现——以下图为例子"></a>实现——以下图为例子</h4><p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%9B%BE%E4%BE%8B-2022-1-21%2011:07:41.png"></p>
+<p>要解决这个问题的代码，需要三个散列表，如：<br><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%95%A3%E5%88%97%E8%A1%A8%E5%9B%BE%E7%A4%BA-2022-1-21%2011:19:16.png"></p>
+<p>部分代码如：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br></pre></td></tr></table></figure>
+
+<p>然后需要一个数组用于记录处理过的节点，因为对于同一个节点，不用处理多次。<code>processed = []</code></p>
+<p>准备工作做完后，下面来看看算法：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642743675(1">-2022-1-21 13:41:27.jpg)</p>
+<p>完整代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 找出最低开销的节点  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_lowest_cost_node</span>(<span class="params">costs</span>):</span></span><br><span class="line">    lowest_cost = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">    lowest_cost_node = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> costs:</span><br><span class="line">        cost = costs[node]</span><br><span class="line">        <span class="keyword">if</span> cost &lt; lowest_cost <span class="keyword">and</span> node <span class="keyword">not</span> <span class="keyword">in</span> processed:</span><br><span class="line">            lowest_cost = cost</span><br><span class="line">            lowest_cost_node = node</span><br><span class="line">    <span class="keyword">return</span> lowest_cost_node</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br><span class="line">processed = []</span><br><span class="line">node = find_lowest_cost_node(costs) <span class="comment">#在未处理的节点中找出开销最小的节点</span></span><br><span class="line"><span class="keyword">while</span> node <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>: <span class="comment">#所有节点都被处理过后结束</span></span><br><span class="line">    cost = costs[node]  </span><br><span class="line">    neighbors = graph[node]</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> neighbors.keys():  <span class="comment">#遍历当前节点的所有邻居</span></span><br><span class="line">        new_cost = cost + neighbors[n] </span><br><span class="line">        <span class="keyword">if</span> costs[n] &gt; new_cost:  <span class="comment">#如果经当前节点前往该邻居更近</span></span><br><span class="line">            costs[n] = new_cost <span class="comment">#就更新该邻居的开销</span></span><br><span class="line">            parents[n] = node <span class="comment"># 同时将该邻居的父节点设置为当前节点</span></span><br><span class="line">    processed.append(node)  <span class="comment">#将当前节点标记为处理过</span></span><br><span class="line">    node = find_lowest_cost_node(costs) <span class="comment">#找出接下来要处理的节点，并循环</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总花费需要：&quot;</span>+ <span class="built_in">str</span>(costs[<span class="string">&quot;fin&quot;</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
+<li>广度优先搜索用于在非加权图中查找最短路径。</li>
+<li>狄克斯特拉算法用于在加权图中查找最短路径。</li>
+<li>仅当权重为正时，狄克斯特拉算法才管用</li>
+<li>如果图中包含负权边，请使用贝尔曼-福德算法</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法图解part8</title>
+    <url>/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/</url>
+    <content><![CDATA[<h2 id="算法图解part8"><a href="#算法图解part8" class="headerlink" title="算法图解part8"></a>算法图解part8</h2><h3 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h3><blockquote>
+<p>内容：</p>
+<p>学习如何处理不可能完成的任务：没有快速算法的问题（NP完全问题）</p>
+<p>学习识别NP完全问题，以免浪费时间去寻找解决它们的快速算法</p>
+<p>学习近似策略，使用它们可快速找到NP完全问题的近似解</p>
+<p>学习贪婪策略——一种非常简单的问题解决策略</p>
+</blockquote>
+<hr>
+<p>贪婪算法很简单：<strong>每步都选择局部最优解，最终得到的就是全局最优解</strong>，它并非在任何情况下都行之有效，但是易于实现！</p>
+<p>举例：</p>
+<p>你是个贪婪的小偷，背着个可装35磅重东西的背包，在商场伺机盗窃可装入背包的商品，此时你会采取贪婪策略：</p>
+<ol>
+<li>盗窃可装入背包的最贵商品。</li>
+<li>再盗窃还可装入被背包的最贵商品，以此类推。</li>
+</ol>
+<p>但是这次这种策略不太好用了，因为商场只有三种商品可以盗窃：</p>
+<p>笔记本电脑——2000$、20磅，音响——3000$、30磅，吉他——1500$、15磅</p>
+<p>音响最贵，偷了音响，但是背包装不下其他东西了，但是如果你头笔记本电脑和吉他，价值将大于音响。</p>
+<p>在这里，贪婪策略显然不能获得最优解，但是非常接近，所有有些情况下，完美时优秀的敌人。有时候，你只需要找到一个能够大致解决问题的算法，此时贪婪算法正好可派上用场，因为它们实现起来容易，得到的结果又与正确结果相当接近。</p>
+<p>这个例子，你别无选择，只能使用贪婪算法。</p>
+<h4 id="集合覆盖问题"><a href="#集合覆盖问题" class="headerlink" title="集合覆盖问题"></a>集合覆盖问题</h4><p>假设你办了个广播节目，要让全美50个州的听众都收听得到，为此，你需要决定在哪些广播台播出，每个广播台只能覆盖部分州，且都需要支付费用，因此，你力图在尽量少的广播台播出。</p>
+<p>![](<a href="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21">https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21</a> 14:36:25.png)</p>
+<p>如何找出覆盖全美的最小广播台集合呢？听起来容易，但是其实非常难，具体方法如下:</p>
+<ol>
+<li>列出每个可能的广播台集合，这被称为 <strong>幂集（power set）</strong>，可能的子集有  $$ 2^n $$</li>
+<li>在这些集合中，选出覆盖全美50个州的最小集合</li>
+</ol>
+<p>由于可能的子集有$2^n$个，因此运行时间为O($2^n$) 。假设你每秒可计算10个子集，所需的时间将如下。</p>
+<table>
+<thead>
+<tr>
+<th align="center">广播台数量</th>
+<th>需要的时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">5</td>
+<td>3.2秒</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>102.4秒</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td>13.6年</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td>4×$10^{21}$年</td>
+</tr>
+</tbody></table>
+<p> <strong>近似算法</strong></p>
+<ol>
+<li>选出这样一个广播台，即它覆盖了最多的未覆盖州。即便这个广播台覆盖了一些已覆盖的州也没有关系。</li>
+<li>重复第一步，知道覆盖了所有的州。</li>
+</ol>
+<p>判断近似算法优劣的标准如下：</p>
+<ul>
+<li>速度有多快</li>
+<li>得到的近似解与最优解的接近程度。</li>
+</ul>
+<p>这个例子中，贪婪算法的运行时间为O($n^2$),其中n为广播数量。</p>
+<ol>
+<li><p><strong>准备工作</strong></p>
+<p>创建一个set集合，其中包含要覆盖的州。</p>
+<p><code>states_needed = set([&quot;mt&quot;,&quot;wa&quot;,&quot;or&quot;,&quot;id&quot;,&quot;nv&quot;,&quot;ut&quot;,&quot;ca&quot;,&quot;az&quot;]) </code></p>
+<p>还需要有可供选择的广播台清单，用散列表表示：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;wa&quot;</span>,<span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([nv<span class="string">&quot;,&quot;</span>ut<span class="string">&quot;])</span></span><br><span class="line"><span class="string">stations[&quot;</span>k5<span class="string">&quot;] = set([&quot;</span>ca<span class="string">&quot;,&quot;</span>az<span class="string">&quot;])</span></span><br></pre></td></tr></table></figure>
+
+<p>最后需要一个集合来存储最终选择的广播台</p>
+<p>final_stations = set()</p>
+</li>
+<li><p><strong>计算答案</strong></p>
+<p>正确的解可能有多个。所以需要遍历所有的广播台，从中选择覆盖了最多的未覆盖州的广播台。将其存储在<code>best_station</code>中。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_station = <span class="literal">None</span></span><br><span class="line">states_covered = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.item():</span><br><span class="line">	covered = states_needed &amp; states_for_station <span class="comment">#拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered)&gt; <span class="built_in">len</span>(states_covered): <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered <span class="comment"># 记录那些已经覆盖的州</span></span><br></pre></td></tr></table></figure>
+
+<p>完整代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">states_needed = <span class="built_in">set</span>([<span class="string">&quot;mt&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;or&quot;</span>, <span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>, <span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k5&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">final_stations = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">while</span> states_needed:  <span class="comment"># 直到需要覆盖的州为空时，停下来</span></span><br><span class="line">    best_station = <span class="literal">None</span></span><br><span class="line">    states_covered = <span class="built_in">set</span>()  <span class="comment"># 包含该广播台覆盖的所有未覆盖的州，</span></span><br><span class="line">    <span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.items():  <span class="comment"># for循环迭代每个广播台，并确定它是否最佳的广播台</span></span><br><span class="line">        <span class="comment"># 拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        covered = states_needed &amp; states_for_station</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered) &gt; <span class="built_in">len</span>(states_covered):  <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station  <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered  <span class="comment"># 记录那些已经覆盖的州</span></span><br><span class="line">    states_needed -= states_covered  <span class="comment"># 去掉那些已经覆盖过的州</span></span><br><span class="line">    final_stations.add(best_station)  <span class="comment"># 将best_station添加到最终的广播台列表中去</span></span><br><span class="line"><span class="built_in">print</span>(final_stations)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>比较下贪婪算法和精准算法的运行时间</p>
+<table>
+<thead>
+<tr>
+<th align="center">广播台数量</th>
+<th>需要的时间（精准算法）O($2^n$)</th>
+<th>需要的时间（贪婪算法）O($n^2$)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">5</td>
+<td>3.2秒</td>
+<td>2.5秒</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>102.4秒</td>
+<td>10秒</td>
+</tr>
+<tr>
+<td align="center">32</td>
+<td>13.6年</td>
+<td>102.4秒</td>
+</tr>
+<tr>
+<td align="center">100</td>
+<td>4×$10^{21}$年</td>
+<td>16.67分钟</td>
+</tr>
+</tbody></table>
+</li>
+</ol>
+<h4 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h4><p>如何判断问题是不是NP完全问题</p>
+<ul>
+<li>元素较少时，算法的运行速度非常快，但随着元素数量的增加，速度会变得非常慢。</li>
+<li>涉及“所有组合”的问题通常是NP完全问题。</li>
+<li>不能将问题分成小问题，必须考虑各种可能的情况。这可能是NP完全问题。</li>
+<li>如果问题涉及序列(如旅行商问题中的城市序列)且难以解决，它可能就是NP完全问题。</li>
+<li>如果问题涉及集合（如广播台集合）且难以解决，它可能就是NP完全问题。</li>
+<li>如果问题可转换为集合覆盖问题或旅行商问题，那它肯定就是NP完全问题</li>
+</ul>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
+<li>贪婪算法寻找巨部最优解，企图以这种方式获得全局最优解</li>
+<li>对于NP完全问题，还没有找到快速解决方案</li>
+<li>面临NP完全问题时，最佳的做法是使用近似算法。</li>
+<li>贪婪算法易于实现，运行速度快，是不错的近似算法。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>算法图解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>单例模式</title>
+    <url>/2022/10/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><blockquote>
+<p>用来创建独一无二的，只能有一个单例的对象的入场券。</p>
+</blockquote>
+<p><strong>”唯一对象”有什么用处？</strong></p>
+<p>有一些对象我们只需要一个，比方说：<strong>线程池</strong>、<strong>缓存</strong>、<strong>对话框</strong>、<strong>处理偏好设置和注册表的对象</strong>、<strong>日志对象</strong>、<strong>设备的驱动程序对象</strong>。这类对象只能有一个实例，如果制造多个实例，就会导致许多问题产生、例如：程序的异常行为、资源使用过量，或者结果不一致。</p>
+<p><strong>为啥不用全局变量？</strong></p>
+<p>单例模式确保了只有一个实例会被创建，同时提供了一个全局的访问点，可以在需要的时候再创建。</p>
+<p>全局变量是对一个对象的静态引用，虽然可以提供全局访问的功能，但是并不能保证应用程序只有一个。</p>
+<p><strong>引入经典的单例模式</strong>：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a><strong>定义</strong></h4><p><strong>单例模式</strong>确保一个类只有一个实例，并提供一个全局访问点。</p>
+<blockquote>
+<p>这种做法对资源敏感的对象特别重要</p>
+</blockquote>
+<h4 id="多线程与单例"><a href="#多线程与单例" class="headerlink" title="多线程与单例"></a>多线程与单例</h4><p>上面的经典单例模式存在多线程调用时会存在可能同时存在多个实例的情况。</p>
+<p>初步解决方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是引入其他的问题，同步会降低性能，而且只有第一次执行此方法的时候才真正需要同步，那如何改善？</p>
+<ol>
+<li><p>如果<code>getInstance()</code>的性能对应用程序不是很关键，那就不管。</p>
+</li>
+<li><p>使用“饿汉式”创建实例，而不用延迟实例化的做法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>用“双重检查加索”，在<code>getInstance()</code>中减少使用同步</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java5及以后生效</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用volatile 修饰可见性</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//只有第一次才彻底执行这里的代码</span></span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="comment">//进入区块后再检查一次，如果仍是null才创建实例</span></span><br><span class="line">                <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>*<strong>注意事项：</strong>小心多个类加载器的背刺，每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同类加载器可能会加载同一个类，当有多个类加载器的时候又使用了单例的时候，注意自行指定类加载器，并指定用一个类加载器。</p>
+</blockquote>
+<p><strong>单例能被破坏吗？怎么解决？</strong></p>
+<ol>
+<li><p>反射破坏单例模式</p>
+<p>在构造方法里面加限制的方式（抛错）</p>
+</li>
+<li><p>序列化获取实例</p>
+<p>类里面添加方法<code>private Object readResolve()&#123; return singleTon&#125;</code></p>
+<p>参考：</p>
+<p><a href="http://t.csdn.cn/CQmdK">单例为什么会被破坏？怎么解决？</a></p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
+<li><p><strong>OO基础</strong></p>
+<ul>
+<li><strong>抽象</strong></li>
+<li><strong>封装</strong></li>
+<li><strong>多态</strong></li>
+<li><strong>继承</strong></li>
+</ul>
+</li>
+<li><p><strong>OO原则</strong></p>
+<ul>
+<li><strong>封装变化</strong></li>
+<li><strong>多用组合，少用继承</strong></li>
+<li><strong>针对接口编程，不针对实现编程</strong></li>
+<li><strong>为交互对象之间的松耦合设计而努力</strong></li>
+<li><strong>对扩展开放，对修改关闭</strong></li>
+<li><strong>依赖抽象,不要依赖具体类</strong></li>
+</ul>
+</li>
+<li><p><strong>OO模式</strong></p>
+<ul>
+<li><p><strong>【策略模式】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></p>
+</li>
+<li><p><strong>【观察者模式】 ——在对象之间定义一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象都会收到通知，并自动更新</strong></p>
+</li>
+<li><p><strong>【装饰者模式】——动态地将责任附加到对象上。想要扩展功能，装饰者提供有别于继承的另一种选择</strong></p>
+</li>
+<li><p><strong>【抽象工厂模式】——提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</strong></p>
+</li>
+<li><p><strong>【工厂方法模式】——定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类把实例化推迟到子类。</strong></p>
+</li>
+<li><p><strong>【单例模式】——确保一个类只有一个实例,并提供全局访问点。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>要点：</strong></p>
+<ul>
+<li>单例模式确保程序中一个类最多只有一个实例。</li>
+<li>单例模式也提供访问这个实例的全局点。</li>
+<li>在Java中实现单例模式需要私有的构造器，一个静态方法和一个静态变量</li>
+<li>确定在性能和资源上的限制，然后小心地选择适当的方案来实现单例，以解决多线程的问题（我们必须认定所有的程序都是多线程的）。</li>
+<li>如果不是采用第五版及以后的<code>Java2</code>，双重检查加锁实例会失效。</li>
+<li>如果使用多个类加载器，可能导致单例失效而产生多个实例。</li>
+<li>如果使用<code>JVM1.2</code>或者之前的版本，你必须建立单例注册表，以免垃圾收集器将单例回收</li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>命令模式</title>
     <url>/2022/10/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><blockquote>
@@ -101,109 +635,6 @@
 </blockquote>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>单例模式</title>
-    <url>/2022/10/15/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><blockquote>
-<p>用来创建独一无二的，只能有一个单例的对象的入场券。</p>
-</blockquote>
-<p><strong>”唯一对象”有什么用处？</strong></p>
-<p>有一些对象我们只需要一个，比方说：<strong>线程池</strong>、<strong>缓存</strong>、<strong>对话框</strong>、<strong>处理偏好设置和注册表的对象</strong>、<strong>日志对象</strong>、<strong>设备的驱动程序对象</strong>。这类对象只能有一个实例，如果制造多个实例，就会导致许多问题产生、例如：程序的异常行为、资源使用过量，或者结果不一致。</p>
-<p><strong>为啥不用全局变量？</strong></p>
-<p>单例模式确保了只有一个实例会被创建，同时提供了一个全局的访问点，可以在需要的时候再创建。</p>
-<p>全局变量是对一个对象的静态引用，虽然可以提供全局访问的功能，但是并不能保证应用程序只有一个。</p>
-<p><strong>引入经典的单例模式</strong>：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">//利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a><strong>定义</strong></h4><p><strong>单例模式</strong>确保一个类只有一个实例，并提供一个全局访问点。</p>
-<blockquote>
-<p>这种做法对资源敏感的对象特别重要</p>
-</blockquote>
-<h4 id="多线程与单例"><a href="#多线程与单例" class="headerlink" title="多线程与单例"></a>多线程与单例</h4><p>上面的经典单例模式存在多线程调用时会存在可能同时存在多个实例的情况。</p>
-<p>初步解决方法：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是引入其他的问题，同步会降低性能，而且只有第一次执行此方法的时候才真正需要同步，那如何改善？</p>
-<ol>
-<li><p>如果<code>getInstance()</code>的性能对应用程序不是很关键，那就不管。</p>
-</li>
-<li><p>使用“饿汉式”创建实例，而不用延迟实例化的做法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用一个静态变量来记录Singleton类的唯一实例</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>用“双重检查加索”，在<code>getInstance()</code>中减少使用同步</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Java5及以后生效</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 利用volatile 修饰可见性</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton uniqueInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//私有构造方法</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//只有这个方法提供实例的返回</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//只有第一次才彻底执行这里的代码</span></span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="comment">//进入区块后再检查一次，如果仍是null才创建实例</span></span><br><span class="line">                <span class="keyword">if</span> (uniqueInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    uniqueInstance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> uniqueInstance;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>*<strong>注意事项：</strong>小心多个类加载器的背刺，每个类加载器都定义了一个命名空间，如果有两个以上的类加载器，不同类加载器可能会加载同一个类，当有多个类加载器的时候又使用了单例的时候，注意自行指定类加载器，并指定用一个类加载器。</p>
-</blockquote>
-<p><strong>单例能被破坏吗？怎么解决？</strong></p>
-<ol>
-<li><p>反射破坏单例模式</p>
-<p>在构造方法里面加限制的方式（抛错）</p>
-</li>
-<li><p>序列化获取实例</p>
-<p>类里面添加方法<code>private Object readResolve()&#123; return singleTon&#125;</code></p>
-<p>参考：</p>
-<p><a href="http://t.csdn.cn/CQmdK">单例为什么会被破坏？怎么解决？</a></p>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
-<li><p><strong>OO基础</strong></p>
-<ul>
-<li><strong>抽象</strong></li>
-<li><strong>封装</strong></li>
-<li><strong>多态</strong></li>
-<li><strong>继承</strong></li>
-</ul>
-</li>
-<li><p><strong>OO原则</strong></p>
-<ul>
-<li><strong>封装变化</strong></li>
-<li><strong>多用组合，少用继承</strong></li>
-<li><strong>针对接口编程，不针对实现编程</strong></li>
-<li><strong>为交互对象之间的松耦合设计而努力</strong></li>
-<li><strong>对扩展开放，对修改关闭</strong></li>
-<li><strong>依赖抽象,不要依赖具体类</strong></li>
-</ul>
-</li>
-<li><p><strong>OO模式</strong></p>
-<ul>
-<li><p><strong>【策略模式】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></p>
-</li>
-<li><p><strong>【观察者模式】 ——在对象之间定义一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象都会收到通知，并自动更新</strong></p>
-</li>
-<li><p><strong>【装饰者模式】——动态地将责任附加到对象上。想要扩展功能，装饰者提供有别于继承的另一种选择</strong></p>
-</li>
-<li><p><strong>【抽象工厂模式】——提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。</strong></p>
-</li>
-<li><p><strong>【工厂方法模式】——定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类把实例化推迟到子类。</strong></p>
-</li>
-<li><p><strong>【单例模式】——确保一个类只有一个实例,并提供全局访问点。</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p><strong>要点：</strong></p>
-<ul>
-<li>单例模式确保程序中一个类最多只有一个实例。</li>
-<li>单例模式也提供访问这个实例的全局点。</li>
-<li>在Java中实现单例模式需要私有的构造器，一个静态方法和一个静态变量</li>
-<li>确定在性能和资源上的限制，然后小心地选择适当的方案来实现单例，以解决多线程的问题（我们必须认定所有的程序都是多线程的）。</li>
-<li>如果不是采用第五版及以后的<code>Java2</code>，双重检查加锁实例会失效。</li>
-<li>如果使用多个类加载器，可能导致单例失效而产生多个实例。</li>
-<li>如果使用<code>JVM1.2</code>或者之前的版本，你必须建立单例注册表，以免垃圾收集器将单例回收</li>
-</ul>
-</blockquote>
 ]]></content>
       <categories>
         <category>设计模式</category>
@@ -338,6 +769,72 @@
 <li>工厂是很有威力的技巧，帮助我们针对抽象编程，而不要针对具体类编程。</li>
 </ul>
 </blockquote>
+]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>策略模式</title>
+    <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
+<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
+</blockquote>
+<h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	fly()</span><br><span class="line">	quack()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="把问题归零"><a href="#把问题归零" class="headerlink" title="把问题归零"></a>把问题归零</h4><p>把会变化的部分取出来并<strong>封装</strong>起来,好让起来部分不会收到影响.</p>
+<p>结果如何?代码变化之后,出其不意的部分变得很少,系统变得更有弹性.</p>
+<blockquote>
+<p>设计原则<br>    找出应用中可能需要变化之处，把他们独立出来，不要和那些不需要变化的代码混在一起<br>        换句话说，把会变化的部分取出来并封装起来，一边以后可以轻易地扩充此部分，而不影响不需要变化的其他部分。**[系统中的某部分改变不会影响其他部分]**。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">	QuackBehavior quackBehavior;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="如何设计类实现不同的行为？"><a href="#如何设计类实现不同的行为？" class="headerlink" title="如何设计类实现不同的行为？"></a>如何设计类实现不同的行为？</h4><p>从现在开始,鸭子的行为将被放在分开的类中,此类专门提供某行为的实现,这样鸭子类就不再需要知道行为的实现细节.</p>
+<blockquote>
+<p>设计原则<br>    针对接口编程，而不是针对实现编程。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyWithWings</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//扇动翅膀飞</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyNoWay</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//飞不动</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Squeak</span> <span class="keyword">implements</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack()&#123;</span><br><span class="line">        <span class="comment">//叽叽叫</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这样的设计,可以让飞行和叫的动作被其他的对象复用,因为这些行为已经与鸭子无关了,而且我们可以新增一些行为,也不会影响到既有的行为类,也不会影响有<em>使用</em>到飞行行为的鸭子类.</p>
+<h5 id="整合鸭子的行为"><a href="#整合鸭子的行为" class="headerlink" title="整合鸭子的行为"></a>整合鸭子的行为</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//行为变量被声明为接口类型</span></span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">    <span class="comment">//等等</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将飞行行为委托给FlyBehavior处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MallardDuck</span> <span class="keyword">extends</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//这样绿头鸭就会叽叽叫了 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MallardDuck</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior = <span class="keyword">new</span> FlyWithWings();</span><br><span class="line">        quackBehavior = <span class="keyword">new</span> Squeak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="动态设定行为"><a href="#动态设定行为" class="headerlink" title="动态设定行为"></a>动态设定行为</h5><p>再<code>Duck</code>类中,加入对属性的setter方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyBehavior</span><span class="params">(FlyBehavior flyBehavior)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.flyBehavior=flyBehavior;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Stringp[] args)</span></span>&#123;</span><br><span class="line">        Duck model =<span class="keyword">new</span> MallardDuck();</span><br><span class="line">        model.performFly();</span><br><span class="line">        <span class="comment">//此时还是扇动翅膀飞</span></span><br><span class="line">        model.setFlyBehavior(<span class="keyword">new</span> FlyNoWay());</span><br><span class="line">        <span class="comment">//变为不会飞了</span></span><br><span class="line">        model.performFly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="封装行为的大局观"><a href="#封装行为的大局观" class="headerlink" title="封装行为的大局观"></a>封装行为的大局观</h4><p>​        在重新设计后,我们不再把鸭子的行为说成<strong>一组行为</strong>,我们开始把行为想成<strong>一族算法</strong>,算法代表鸭子能做的事(不同的叫法和飞行方法)</p>
+<p><strong>有一个</strong>可能比<strong>是一个</strong>更好.</p>
+<p>​    每一只鸭子都有一个<code>FlyBehavior</code>,让鸭子将飞行委托它们代为处理,而不是从父类继承过来自己定义实现.</p>
+<p>引入设计原则<br>    <strong>多用组合，少用继承。</strong></p>
+<p>对鸭子不同的子类的实现,引入了此次学习的对象:<strong>策略模式(Strategy Pattern)</strong></p>
+<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
+<li><strong>OO基础</strong><ul>
+<li><strong>抽象</strong></li>
+<li><strong>封装</strong></li>
+<li><strong>多态</strong></li>
+<li><strong>继承</strong></li>
+</ul>
+</li>
+<li><strong>OO原则</strong><ul>
+<li><strong>封装变化</strong></li>
+<li><strong>多用组合，少用继承</strong></li>
+<li><strong>针对接口编程，不针对实现编程</strong></li>
+</ul>
+</li>
+<li><strong>OO模式</strong><ul>
+<li><strong>【策略】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>设计模式</category>
@@ -557,72 +1054,6 @@
       </tags>
   </entry>
   <entry>
-    <title>策略模式</title>
-    <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
-    <content><![CDATA[<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><blockquote>
-<p><strong>策略模式</strong>:定义了算法族,分别封装起来,让它们之间可以互相替换,此模式让算法独立于使用算法的客户.</p>
-</blockquote>
-<h5 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h5><p>有个鸭子类,鸭子具有行为(叫,飞)</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	fly()</span><br><span class="line">	quack()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="把问题归零"><a href="#把问题归零" class="headerlink" title="把问题归零"></a>把问题归零</h4><p>把会变化的部分取出来并<strong>封装</strong>起来,好让起来部分不会收到影响.</p>
-<p>结果如何?代码变化之后,出其不意的部分变得很少,系统变得更有弹性.</p>
-<blockquote>
-<p>设计原则<br>    找出应用中可能需要变化之处，把他们独立出来，不要和那些不需要变化的代码混在一起<br>        换句话说，把会变化的部分取出来并封装起来，一边以后可以轻易地扩充此部分，而不影响不需要变化的其他部分。**[系统中的某部分改变不会影响其他部分]**。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    String color;</span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">	QuackBehavior quackBehavior;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly();</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h4 id="如何设计类实现不同的行为？"><a href="#如何设计类实现不同的行为？" class="headerlink" title="如何设计类实现不同的行为？"></a>如何设计类实现不同的行为？</h4><p>从现在开始,鸭子的行为将被放在分开的类中,此类专门提供某行为的实现,这样鸭子类就不再需要知道行为的实现细节.</p>
-<blockquote>
-<p>设计原则<br>    针对接口编程，而不是针对实现编程。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyWithWings</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//扇动翅膀飞</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FlyNoWay</span> <span class="keyword">implements</span> <span class="title">FlyBehavior</span></span>&#123;</span><br><span class="line">    fly()&#123;</span><br><span class="line">        <span class="comment">//飞不动</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Squeak</span> <span class="keyword">implements</span> <span class="title">QuackBehavior</span></span>&#123;</span><br><span class="line">    quack()&#123;</span><br><span class="line">        <span class="comment">//叽叽叫</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这样的设计,可以让飞行和叫的动作被其他的对象复用,因为这些行为已经与鸭子无关了,而且我们可以新增一些行为,也不会影响到既有的行为类,也不会影响有<em>使用</em>到飞行行为的鸭子类.</p>
-<h5 id="整合鸭子的行为"><a href="#整合鸭子的行为" class="headerlink" title="整合鸭子的行为"></a>整合鸭子的行为</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//行为变量被声明为接口类型</span></span><br><span class="line">	FlyBehavior flyBehavior;</span><br><span class="line">    <span class="comment">//等等</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将飞行行为委托给FlyBehavior处理</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performFly</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior.fly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MallardDuck</span> <span class="keyword">extends</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">    <span class="comment">//这样绿头鸭就会叽叽叫了 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MallardDuck</span><span class="params">()</span></span>&#123;</span><br><span class="line">        flyBehavior = <span class="keyword">new</span> FlyWithWings();</span><br><span class="line">        quackBehavior = <span class="keyword">new</span> Squeak();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="动态设定行为"><a href="#动态设定行为" class="headerlink" title="动态设定行为"></a>动态设定行为</h5><p>再<code>Duck</code>类中,加入对属性的setter方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123; </span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlyBehavior</span><span class="params">(FlyBehavior flyBehavior)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.flyBehavior=flyBehavior;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(Stringp[] args)</span></span>&#123;</span><br><span class="line">        Duck model =<span class="keyword">new</span> MallardDuck();</span><br><span class="line">        model.performFly();</span><br><span class="line">        <span class="comment">//此时还是扇动翅膀飞</span></span><br><span class="line">        model.setFlyBehavior(<span class="keyword">new</span> FlyNoWay());</span><br><span class="line">        <span class="comment">//变为不会飞了</span></span><br><span class="line">        model.performFly();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="封装行为的大局观"><a href="#封装行为的大局观" class="headerlink" title="封装行为的大局观"></a>封装行为的大局观</h4><p>​        在重新设计后,我们不再把鸭子的行为说成<strong>一组行为</strong>,我们开始把行为想成<strong>一族算法</strong>,算法代表鸭子能做的事(不同的叫法和飞行方法)</p>
-<p><strong>有一个</strong>可能比<strong>是一个</strong>更好.</p>
-<p>​    每一只鸭子都有一个<code>FlyBehavior</code>,让鸭子将飞行委托它们代为处理,而不是从父类继承过来自己定义实现.</p>
-<p>引入设计原则<br>    <strong>多用组合，少用继承。</strong></p>
-<p>对鸭子不同的子类的实现,引入了此次学习的对象:<strong>策略模式(Strategy Pattern)</strong></p>
-<h4 id="设计工具箱"><a href="#设计工具箱" class="headerlink" title="设计工具箱"></a><strong>设计工具箱</strong></h4><ul>
-<li><strong>OO基础</strong><ul>
-<li><strong>抽象</strong></li>
-<li><strong>封装</strong></li>
-<li><strong>多态</strong></li>
-<li><strong>继承</strong></li>
-</ul>
-</li>
-<li><strong>OO原则</strong><ul>
-<li><strong>封装变化</strong></li>
-<li><strong>多用组合，少用继承</strong></li>
-<li><strong>针对接口编程，不针对实现编程</strong></li>
-</ul>
-</li>
-<li><strong>OO模式</strong><ul>
-<li><strong>【策略】 ——定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</strong></li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>设计模式简介</title>
     <url>/2022/08/11/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><strong>共享模式词汇</strong></p>
@@ -648,186 +1079,6 @@
       </tags>
   </entry>
   <entry>
-    <title>算法图解part8</title>
-    <url>/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part8/</url>
-    <content><![CDATA[<h2 id="算法图解part8"><a href="#算法图解part8" class="headerlink" title="算法图解part8"></a>算法图解part8</h2><h3 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h3><blockquote>
-<p>内容：</p>
-<p>学习如何处理不可能完成的任务：没有快速算法的问题（NP完全问题）</p>
-<p>学习识别NP完全问题，以免浪费时间去寻找解决它们的快速算法</p>
-<p>学习近似策略，使用它们可快速找到NP完全问题的近似解</p>
-<p>学习贪婪策略——一种非常简单的问题解决策略</p>
-</blockquote>
-<hr>
-<p>贪婪算法很简单：<strong>每步都选择局部最优解，最终得到的就是全局最优解</strong>，它并非在任何情况下都行之有效，但是易于实现！</p>
-<p>举例：</p>
-<p>你是个贪婪的小偷，背着个可装35磅重东西的背包，在商场伺机盗窃可装入背包的商品，此时你会采取贪婪策略：</p>
-<ol>
-<li>盗窃可装入背包的最贵商品。</li>
-<li>再盗窃还可装入被背包的最贵商品，以此类推。</li>
-</ol>
-<p>但是这次这种策略不太好用了，因为商场只有三种商品可以盗窃：</p>
-<p>笔记本电脑——2000$、20磅，音响——3000$、30磅，吉他——1500$、15磅</p>
-<p>音响最贵，偷了音响，但是背包装不下其他东西了，但是如果你头笔记本电脑和吉他，价值将大于音响。</p>
-<p>在这里，贪婪策略显然不能获得最优解，但是非常接近，所有有些情况下，完美时优秀的敌人。有时候，你只需要找到一个能够大致解决问题的算法，此时贪婪算法正好可派上用场，因为它们实现起来容易，得到的结果又与正确结果相当接近。</p>
-<p>这个例子，你别无选择，只能使用贪婪算法。</p>
-<h4 id="集合覆盖问题"><a href="#集合覆盖问题" class="headerlink" title="集合覆盖问题"></a>集合覆盖问题</h4><p>假设你办了个广播节目，要让全美50个州的听众都收听得到，为此，你需要决定在哪些广播台播出，每个广播台只能覆盖部分州，且都需要支付费用，因此，你力图在尽量少的广播台播出。</p>
-<p>![](<a href="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21">https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642746985967-2022-1-21</a> 14:36:25.png)</p>
-<p>如何找出覆盖全美的最小广播台集合呢？听起来容易，但是其实非常难，具体方法如下:</p>
-<ol>
-<li>列出每个可能的广播台集合，这被称为 <strong>幂集（power set）</strong>，可能的子集有  $$ 2^n $$</li>
-<li>在这些集合中，选出覆盖全美50个州的最小集合</li>
-</ol>
-<p>由于可能的子集有$2^n$个，因此运行时间为O($2^n$) 。假设你每秒可计算10个子集，所需的时间将如下。</p>
-<table>
-<thead>
-<tr>
-<th align="center">广播台数量</th>
-<th>需要的时间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">5</td>
-<td>3.2秒</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td>102.4秒</td>
-</tr>
-<tr>
-<td align="center">32</td>
-<td>13.6年</td>
-</tr>
-<tr>
-<td align="center">100</td>
-<td>4×$10^{21}$年</td>
-</tr>
-</tbody></table>
-<p> <strong>近似算法</strong></p>
-<ol>
-<li>选出这样一个广播台，即它覆盖了最多的未覆盖州。即便这个广播台覆盖了一些已覆盖的州也没有关系。</li>
-<li>重复第一步，知道覆盖了所有的州。</li>
-</ol>
-<p>判断近似算法优劣的标准如下：</p>
-<ul>
-<li>速度有多快</li>
-<li>得到的近似解与最优解的接近程度。</li>
-</ul>
-<p>这个例子中，贪婪算法的运行时间为O($n^2$),其中n为广播数量。</p>
-<ol>
-<li><p><strong>准备工作</strong></p>
-<p>创建一个set集合，其中包含要覆盖的州。</p>
-<p><code>states_needed = set([&quot;mt&quot;,&quot;wa&quot;,&quot;or&quot;,&quot;id&quot;,&quot;nv&quot;,&quot;ut&quot;,&quot;ca&quot;,&quot;az&quot;]) </code></p>
-<p>还需要有可供选择的广播台清单，用散列表表示：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>,<span class="string">&quot;wa&quot;</span>,<span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>,<span class="string">&quot;nv&quot;</span>,<span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([nv<span class="string">&quot;,&quot;</span>ut<span class="string">&quot;])</span></span><br><span class="line"><span class="string">stations[&quot;</span>k5<span class="string">&quot;] = set([&quot;</span>ca<span class="string">&quot;,&quot;</span>az<span class="string">&quot;])</span></span><br></pre></td></tr></table></figure>
-
-<p>最后需要一个集合来存储最终选择的广播台</p>
-<p>final_stations = set()</p>
-</li>
-<li><p><strong>计算答案</strong></p>
-<p>正确的解可能有多个。所以需要遍历所有的广播台，从中选择覆盖了最多的未覆盖州的广播台。将其存储在<code>best_station</code>中。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">best_station = <span class="literal">None</span></span><br><span class="line">states_covered = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.item():</span><br><span class="line">	covered = states_needed &amp; states_for_station <span class="comment">#拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered)&gt; <span class="built_in">len</span>(states_covered): <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered <span class="comment"># 记录那些已经覆盖的州</span></span><br></pre></td></tr></table></figure>
-
-<p>完整代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">states_needed = <span class="built_in">set</span>([<span class="string">&quot;mt&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;or&quot;</span>, <span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>, <span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">stations = &#123;&#125;</span><br><span class="line">stations[<span class="string">&quot;k1&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k2&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;id&quot;</span>, <span class="string">&quot;wa&quot;</span>, <span class="string">&quot;mt&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k3&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;or&quot;</span>, <span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ca&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k4&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;nv&quot;</span>, <span class="string">&quot;ut&quot;</span>])</span><br><span class="line">stations[<span class="string">&quot;k5&quot;</span>] = <span class="built_in">set</span>([<span class="string">&quot;ca&quot;</span>, <span class="string">&quot;az&quot;</span>])</span><br><span class="line">final_stations = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">while</span> states_needed:  <span class="comment"># 直到需要覆盖的州为空时，停下来</span></span><br><span class="line">    best_station = <span class="literal">None</span></span><br><span class="line">    states_covered = <span class="built_in">set</span>()  <span class="comment"># 包含该广播台覆盖的所有未覆盖的州，</span></span><br><span class="line">    <span class="keyword">for</span> station, states_for_station <span class="keyword">in</span> stations.items():  <span class="comment"># for循环迭代每个广播台，并确定它是否最佳的广播台</span></span><br><span class="line">        <span class="comment"># 拿最终需要的集合与每个广播台计算交集，它包含当前广播台覆盖的一系列还未覆盖的州</span></span><br><span class="line">        covered = states_needed &amp; states_for_station</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(covered) &gt; <span class="built_in">len</span>(states_covered):  <span class="comment"># 如果此广播台覆盖的州是否比best_station还多</span></span><br><span class="line">            best_station = station  <span class="comment"># 将best_station设置为当前广播台</span></span><br><span class="line">            states_covered = covered  <span class="comment"># 记录那些已经覆盖的州</span></span><br><span class="line">    states_needed -= states_covered  <span class="comment"># 去掉那些已经覆盖过的州</span></span><br><span class="line">    final_stations.add(best_station)  <span class="comment"># 将best_station添加到最终的广播台列表中去</span></span><br><span class="line"><span class="built_in">print</span>(final_stations)</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>比较下贪婪算法和精准算法的运行时间</p>
-<table>
-<thead>
-<tr>
-<th align="center">广播台数量</th>
-<th>需要的时间（精准算法）O($2^n$)</th>
-<th>需要的时间（贪婪算法）O($n^2$)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">5</td>
-<td>3.2秒</td>
-<td>2.5秒</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td>102.4秒</td>
-<td>10秒</td>
-</tr>
-<tr>
-<td align="center">32</td>
-<td>13.6年</td>
-<td>102.4秒</td>
-</tr>
-<tr>
-<td align="center">100</td>
-<td>4×$10^{21}$年</td>
-<td>16.67分钟</td>
-</tr>
-</tbody></table>
-</li>
-</ol>
-<h4 id="NP完全问题"><a href="#NP完全问题" class="headerlink" title="NP完全问题"></a>NP完全问题</h4><p>如何判断问题是不是NP完全问题</p>
-<ul>
-<li>元素较少时，算法的运行速度非常快，但随着元素数量的增加，速度会变得非常慢。</li>
-<li>涉及“所有组合”的问题通常是NP完全问题。</li>
-<li>不能将问题分成小问题，必须考虑各种可能的情况。这可能是NP完全问题。</li>
-<li>如果问题涉及序列(如旅行商问题中的城市序列)且难以解决，它可能就是NP完全问题。</li>
-<li>如果问题涉及集合（如广播台集合）且难以解决，它可能就是NP完全问题。</li>
-<li>如果问题可转换为集合覆盖问题或旅行商问题，那它肯定就是NP完全问题</li>
-</ul>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ul>
-<li>贪婪算法寻找巨部最优解，企图以这种方式获得全局最优解</li>
-<li>对于NP完全问题，还没有找到快速解决方案</li>
-<li>面临NP完全问题时，最佳的做法是使用近似算法。</li>
-<li>贪婪算法易于实现，运行速度快，是不错的近似算法。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法图解part7</title>
-    <url>/2022/01/21/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part7/</url>
-    <content><![CDATA[<h2 id="算法图解part7"><a href="#算法图解part7" class="headerlink" title="算法图解part7"></a>算法图解part7</h2><h3 id="狄克斯特拉算法"><a href="#狄克斯特拉算法" class="headerlink" title="狄克斯特拉算法"></a>狄克斯特拉算法</h3><blockquote>
-<p>在广度优先搜索中，你能找到A到B点最短的路径。</p>
-<p>但是在路径上加上时间<strong>权重</strong>后，此时我们需要找出A到B最快的路径怎么办呢，这里就引入了狄克斯特拉算法（Dijkstra‘s algorithm）。</p>
-</blockquote>
-<hr>
-<p>此算法包含四个步骤：</p>
-<ol>
-<li>找出“最便宜”的节点，即可在最短时间内到达的节点。</li>
-<li>对于该节点的邻居，检查是否有前往它们的更短路径，如果有，则更新其开销</li>
-<li>重复这个过程，直到对图中的每个节点（终点不需要）都这样做了</li>
-<li>计算最终路径。</li>
-</ol>
-<p>狄克斯特拉算法用于每条边都有关联数字的图，这些数字称为权重，带权重的图称为 <strong>加权图（weighted graph）</strong>，不带权重的称为   <strong>非加权图（unweighted graph）</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E6%9D%83%E9%87%8D%E5%9B%BE-2022-1-21%2010:44:27.png" alt="加权图"></p>
-<p>但是如果图中出现了带环的，那么我们可能出现绕环的行为，所以说，狄克斯特拉算法只适用于 <strong>有向无环图（directed acyclic graph，DAG）</strong></p>
-<p>算法背后关键的理念：<strong>找出图中最便宜的节点，并确保没有到该节点的更便宜的路径</strong></p>
-<p>**<u>如果有负权边，就不能使用狄克斯特拉算法</u>**，因为负权边会导致这种算法不管用。当有负权边的图中，可以使用另一种算法—— <em>贝尔曼 - 福德算法（Bellman-Ford algorithm）</em>，这里不做介绍。</p>
-<h4 id="实现——以下图为例子"><a href="#实现——以下图为例子" class="headerlink" title="实现——以下图为例子"></a>实现——以下图为例子</h4><p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%9B%BE%E4%BE%8B-2022-1-21%2011:07:41.png"></p>
-<p>要解决这个问题的代码，需要三个散列表，如：<br><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E6%95%A3%E5%88%97%E8%A1%A8%E5%9B%BE%E7%A4%BA-2022-1-21%2011:19:16.png"></p>
-<p>部分代码如：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br></pre></td></tr></table></figure>
-
-<p>然后需要一个数组用于记录处理过的节点，因为对于同一个节点，不用处理多次。<code>processed = []</code></p>
-<p>准备工作做完后，下面来看看算法：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/luruiwutou/pictureBed@main/images/1642743675(1">-2022-1-21 13:41:27.jpg)</p>
-<p>完整代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 找出最低开销的节点  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_lowest_cost_node</span>(<span class="params">costs</span>):</span></span><br><span class="line">    lowest_cost = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">    lowest_cost_node = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> costs:</span><br><span class="line">        cost = costs[node]</span><br><span class="line">        <span class="keyword">if</span> cost &lt; lowest_cost <span class="keyword">and</span> node <span class="keyword">not</span> <span class="keyword">in</span> processed:</span><br><span class="line">            lowest_cost = cost</span><br><span class="line">            lowest_cost_node = node</span><br><span class="line">    <span class="keyword">return</span> lowest_cost_node</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">graph = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">graph[<span class="string">&quot;start&quot;</span>][<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;a&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">1</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>] = &#123;&#125;</span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;a&quot;</span>] = <span class="number">3</span></span><br><span class="line">graph[<span class="string">&quot;b&quot;</span>][<span class="string">&quot;fin&quot;</span>] = <span class="number">5</span></span><br><span class="line">graph[<span class="string">&quot;fin&quot;</span>] = &#123;&#125; <span class="comment">#终点没有任何邻居</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化所有权重散列表：&quot;</span>+<span class="built_in">str</span>(graph))</span><br><span class="line">infinity = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line">costs = &#123;&#125;</span><br><span class="line">costs[<span class="string">&quot;a&quot;</span>] = <span class="number">6</span></span><br><span class="line">costs[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">costs[<span class="string">&quot;fin&quot;</span>] = infinity</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始化节点开销散列表：&quot;</span>+<span class="built_in">str</span>(costs))</span><br><span class="line">parents = &#123;&#125;</span><br><span class="line">parents[<span class="string">&quot;a&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;b&quot;</span>] = <span class="string">&quot;start&quot;</span></span><br><span class="line">parents[<span class="string">&quot;fin&quot;</span>] = <span class="literal">None</span> </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;初始父节点散列表：&quot;</span>+<span class="built_in">str</span>(parents))</span><br><span class="line">processed = []</span><br><span class="line">node = find_lowest_cost_node(costs) <span class="comment">#在未处理的节点中找出开销最小的节点</span></span><br><span class="line"><span class="keyword">while</span> node <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>: <span class="comment">#所有节点都被处理过后结束</span></span><br><span class="line">    cost = costs[node]  </span><br><span class="line">    neighbors = graph[node]</span><br><span class="line">    <span class="keyword">for</span> n <span class="keyword">in</span> neighbors.keys():  <span class="comment">#遍历当前节点的所有邻居</span></span><br><span class="line">        new_cost = cost + neighbors[n] </span><br><span class="line">        <span class="keyword">if</span> costs[n] &gt; new_cost:  <span class="comment">#如果经当前节点前往该邻居更近</span></span><br><span class="line">            costs[n] = new_cost <span class="comment">#就更新该邻居的开销</span></span><br><span class="line">            parents[n] = node <span class="comment"># 同时将该邻居的父节点设置为当前节点</span></span><br><span class="line">    processed.append(node)  <span class="comment">#将当前节点标记为处理过</span></span><br><span class="line">    node = find_lowest_cost_node(costs) <span class="comment">#找出接下来要处理的节点，并循环</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总花费需要：&quot;</span>+ <span class="built_in">str</span>(costs[<span class="string">&quot;fin&quot;</span>]))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
-<li>广度优先搜索用于在非加权图中查找最短路径。</li>
-<li>狄克斯特拉算法用于在加权图中查找最短路径。</li>
-<li>仅当权重为正时，狄克斯特拉算法才管用</li>
-<li>如果图中包含负权边，请使用贝尔曼-福德算法</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>阅读记</title>
     <url>/2022/01/19/%E9%98%85%E8%AF%BB/read_01/</url>
     <content><![CDATA[<h1 id="理想国"><a href="#理想国" class="headerlink" title="理想国"></a>理想国</h1><ul>
@@ -837,256 +1088,5 @@
       <categories>
         <category>阅读记录</category>
       </categories>
-  </entry>
-  <entry>
-    <title>算法图解part6</title>
-    <url>/2021/12/28/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part6/</url>
-    <content><![CDATA[<h2 id="算法图解part6"><a href="#算法图解part6" class="headerlink" title="算法图解part6"></a>算法图解part6</h2><h3 id="图是什么"><a href="#图是什么" class="headerlink" title="图是什么"></a>图是什么</h3><p><strong>图模拟一组链接</strong></p>
-<p>图由节点和边组成。一个节点可能与众多节点直接相连，这些节点被称为邻居。</p>
-<h3 id="广度优先搜索———图算法"><a href="#广度优先搜索———图算法" class="headerlink" title="广度优先搜索———图算法"></a>广度优先搜索———图算法</h3><blockquote>
-<p>广度优先搜索让你能够找出两样东西之间的最短距离，不过最短距离的含义有很多！</p>
-</blockquote>
-<p>使用广度优先搜索可以:</p>
-<ul>
-<li> 编写国际跳棋AI，计算最少走多少步就可获胜；</li>
-<li>编写拼写检查器，计算最少编辑多少个地方就可以将错拼的单词改写成正确的单词，如将READED改为READER需要编辑一个地方；</li>
-<li>根据你的人际关系网格找到关系最近的医生。</li>
-</ul>
-<p>可以帮助回答两类问题</p>
-<ol>
-<li>从节点A出发，有前往节点B的路径吗？</li>
-<li>从节点A出发，前往B的哪条路径最短？</li>
-</ol>
-<p>此时我们需要确定顺序时（满足第二类问题），需要按添加顺序进行检查时就引入了<strong>队列（<code>queue</code>）</strong></p>
-<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><p>队列类似于栈，你不能随机访问队列中的元素。它只支持两种操作：<strong>入队</strong>和<strong>出队</strong></p>
-<p>队列是一种<strong>先进先出（First In First Out，FIFO）</strong>的数据结构，而栈式一种<strong>后进后出（Last In First Out,  LIFO）</strong>的数据结构</p>
-<h4 id="实现图"><a href="#实现图" class="headerlink" title="实现图"></a>实现图</h4><p>图由多个节点组成，内阁节点都与临近节点相连，如果表示类似于“你-&gt;Bob”这样的关系呢？</p>
-<p>此时引入上期了解过的<strong>散列表</strong></p>
-<table>
-    <tr>         
-        <td rowspan="3">你</td><td>ALICE</td> 
-    </tr>
-    <tr>         
-        <td>CLIARE</td>    
-    </tr>    
-    <tr>         
-        <td>BOB</td>
-    </tr>
-</table>
-
-<p> 表示这种映射关系的Python代码入下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph&#123;<span class="string">&quot;you&quot;</span>&#125; = &#123;<span class="string">&quot;alice&quot;</span>,<span class="string">&quot;bob&quot;</span>,<span class="string">&quot;cliare&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同理，你的邻居的邻居也可如此表示</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">graph = &#123;&#125;</span><br><span class="line">graph&#123;&quot;you&quot;&#125; = [&quot;alice&quot;,&quot;bob&quot;,&quot;cliare&quot;]</span><br><span class="line">graph&#123;&quot;alice&quot;&#125; = [&quot;peggy&quot;]</span><br><span class="line">graph&#123;&quot;bob&quot;&#125; = [&quot;anuj&quot;,&quot;peggy&quot;]</span><br><span class="line">graph&#123;&quot;cliare&quot;&#125; = &quot;thom&quot;,&quot;jonny&quot;]</span><br><span class="line">graph&#123;&quot;anuj&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;peggy&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;thom&quot;&#125; = []</span><br><span class="line">graph&#123;&quot;jonny&quot;&#125; = []</span><br></pre></td></tr></table></figure>
-
-<p>Anuj、Peggy、Thom和Jonny都没有邻居，那这种情况叫什么？</p>
-<p><strong>有向图：</strong>有指向他们的箭头，但是没有从他们出发指向其他人的箭头，被称为有向图（directed graph）</p>
-<p><strong>无向图：</strong>没有箭头，直接相连的节点互为邻居。</p>
-<h5 id="如何实现查找自己的关系网？"><a href="#如何实现查找自己的关系网？" class="headerlink" title="如何实现查找自己的关系网？"></a>如何实现查找自己的关系网？</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">//示例</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span>(<span class="params">name</span>)</span></span><br><span class="line"><span class="function">	<span class="title">search_queue</span> = <span class="title">deque</span>()//创建一个队列</span></span><br><span class="line"><span class="function">    <span class="title">search_queue</span> += <span class="title">graph</span>[<span class="title">name</span>]//将你的邻居加入队列</span></span><br><span class="line"><span class="function">    <span class="title">searched</span> =[] //这个数组记录用于检查过的人</span></span><br><span class="line"><span class="function">    <span class="title">while</span> <span class="title">search_queue</span>:</span></span><br><span class="line">        person = search_queue.popleft()//取出其中的第一个人</span><br><span class="line">        <span class="keyword">if</span> person <span class="keyword">not</span> <span class="keyword">in</span> searched: //仅当这个人没检查过时才检查</span><br><span class="line">            <span class="keyword">if</span> penson_is_you_need(person)://检查这个人是否是你需要的</span><br><span class="line">                <span class="built_in">print</span> person + <span class="string">&quot; is you need!&quot;</span> //是你需要的人</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span> //找到了 终止</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                search_queue +=graph[person] //不是你需要的，将这个人的邻居加入搜索队列</span><br><span class="line">                searched.append(person) //标记为检查过</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">False</span> //你的关系网里没有你需要的人</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">search(<span class="string">&quot;you&quot;</span>)</span><br><span class="line">         </span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h4><p>因为你沿着每条边前行，因此运行时间至少为O(边数)，加上使用了队列，其中包含要检查的每个人，将每个人添加到队列需要的时间是固定的即为O(1)，因此对每个人都这样做的总时间为O(人数)。</p>
-<p>所以，广度优先搜索的运行时间为O(人数+边数)，通常写作O(V+E)，其中V为顶点（vertice）数，E为边数。</p>
-<h6 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h6><p>如果任务A以来任务B，在列表中任务A就必须在任务B后面，这被称为<strong>拓扑排序</strong>，使用它可根据图创建一个有序列表，类似于“家谱”，这种图被称为树。树是有一种特殊的图，其中没有往后指的边。</p>
-<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
-<li>广度优先搜索指出是否有从A到B的路径。</li>
-<li>如果有，广度优先搜索将找出最短路径。</li>
-<li>面临类似于寻找最短路径的问题时，可尝试使用图来建立模型，再使用广度优先搜索来解决问题。</li>
-<li>有向图中的边为箭头，箭头的方向指定了关系的方向，例如，rama-&gt;adit表示rama欠adit钱。</li>
-<li>无向图中的边不带箭头，其中的关系是双向的，例如，ross - rachel表示“ross与rachel约会，而rachel也与ross约会“。</li>
-<li>队列是先进先出（FIFO）的，栈式后进先出（LIFO）的</li>
-<li>你需要按加入顺序检查搜索列表中的人，否则找到的就不是最短路径，因此搜索列表必须是队列。</li>
-<li>对于检查过的人，务必不要再去检查，否则可能导致无限循环。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法图解part5</title>
-    <url>/2021/12/09/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part5/</url>
-    <content><![CDATA[<h2 id="算法图解part5"><a href="#算法图解part5" class="headerlink" title="算法图解part5"></a>算法图解part5</h2><h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><blockquote>
-<p>你几乎不用自己去实现散列表，因为你使用的编程语言提供了散列表实现。你可以各种语言提供的散列表，并假定能够获得平均情况下的性能：<strong>常量时间</strong></p>
-</blockquote>
-<p>散列表可以理解为Java语言中的hashmap，它拥有几个特征：</p>
-<ul>
-<li>散列函数<ul>
-<li>必须满足的一些要求<ul>
-<li>他必须是一致的。每次相同的输入必须得到相同的结果。</li>
-<li>它应将不同的输入映射到不同的数字。（此时就引入了下一个环节的<strong>冲突</strong>）</li>
-<li>它知道数组的大小，只会返回有效的索引</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>应用案例<ul>
-<li>将散列表用于查找/模拟映射关系<ul>
-<li>电话簿</li>
-<li>NDS解析（域名转换为IP）</li>
-</ul>
-</li>
-<li>防止重复<ul>
-<li>投票</li>
-</ul>
-</li>
-<li>将散列表用作缓存/记住数据<ul>
-<li>Web缓存常用数据，用以加速网络加载，提高用户体验</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><blockquote>
-<p>前面提到的散列函数总是将不同的键映射到数组的不同位置，实际上是几乎不可能的。</p>
-</blockquote>
-<p>如果两个键映射到一个位置的时候，就在这个位置存储一个链表</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[k]-&gt;[]-&gt;[]-[] //链表</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">[]</span><br><span class="line">数组</span><br></pre></td></tr></table></figure>
-
-<p>经验教训：</p>
-<ul>
-<li><strong>散列函数很重要</strong>。前面的散列函数将所有的键将所有的键都映射到一个位置，而理想的情况是，散列函数将键均匀地映射到散列表的不同位置。</li>
-<li>如果散列表存储的链表很长，散列表的速度将急剧下降。然而，如果使用的散列函数很好，这些链表就不会很长！</li>
-</ul>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>散列表的性能</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>散列表平均情况(常量时间)</th>
-<th>散列表最糟情况</th>
-<th>数组</th>
-<th>链表</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>查找</td>
-<td>O(1)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-<td>O(n)</td>
-</tr>
-<tr>
-<td>插入</td>
-<td>O(1)</td>
-<td>O(n)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>删除</td>
-<td>O(1)</td>
-<td>O(n)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-</tr>
-</tbody></table>
-<p>在平均情况下，散列表的查找（获取给定索引处的值）速度和数组一样快，而插入和删除的速度和链表一样快，因此它兼具两者的优点！</p>
-<p>但是在最糟情况下，散列表的各种操作的速度都很慢，因此使用散列表时，避开最糟情况至关重要。</p>
-<p>如何避免：</p>
-<ul>
-<li>较低的填装因子；<ul>
-<li>散列表包含的元素数/位置总数。</li>
-<li>填装因子越低，发生冲突的可能性越小。散列表的性能越高。</li>
-<li>调整散列表长度的工作开销很大，但是平均而言，即使这样也不影响散列表操作时间O(1)。</li>
-</ul>
-</li>
-<li>良好的散列函数。<ul>
-<li>SHA函数等等，可后续了解</li>
-</ul>
-</li>
-</ul>
-<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><p>散列表是一种功能强大的数据结构，其操作速度快，还能让你以不同的方式建立数据模型。</p>
-<ul>
-<li>你可以结合散列函数和数组来创建散列表。</li>
-<li>冲突很糟糕，你应使用可以最大限度减少冲突的散列函数。</li>
-<li>散列表的查找、插入和删除速度都非常快。</li>
-<li>散列表适合用于模拟映射关系。</li>
-<li>一旦填装因子超过0.7，就该调整散列表的长度。</li>
-<li>散列表可用于缓存数（例如，在Web服务器）。</li>
-<li>散列表非常适合用于防止重复。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法图解part4</title>
-    <url>/2021/12/08/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part4/</url>
-    <content><![CDATA[<h3 id="算法图解小结part4"><a href="#算法图解小结part4" class="headerlink" title="算法图解小结part4"></a>算法图解小结part4</h3><h4 id="分而治之（divide-and-conquer，D-amp-C）"><a href="#分而治之（divide-and-conquer，D-amp-C）" class="headerlink" title="分而治之（divide and conquer，D&amp;C）"></a>分而治之（divide and conquer，D&amp;C）</h4><blockquote>
-<p>一种著名的递归式问题解决方法</p>
-</blockquote>
-<p>使用D&amp;C解决问题的过程包括两个步骤</p>
-<ul>
-<li>找出极基线条件，这种条件必须尽可能简单。</li>
-<li>不断将问题分拣（或者说缩小规模），直至符合基线条件。</li>
-</ul>
-<h4 id="快速排序代码demo"><a href="#快速排序代码demo" class="headerlink" title="快速排序代码demo"></a>快速排序代码demo</h4><blockquote>
-<p>归纳证明：基线条件和归纳条件。<br>对于快速排序，在基线条件中，证明这种算法对空数组或包含一个元素的数组管用。在归纳条件中，证明如果快速排序对包含一个元素的数组管用，对包含两个元素的数组也将管用，对包含三个元素的数组也将管用，以此类推。因此可以说，快速排序对任何长度的数组都管用。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] quickSort(<span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr.length &lt; <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> arr;<span class="comment">//基线条件：为空或者只包含一个元素的数组是“有序”的</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> pivot = arr[<span class="number">0</span>];<span class="comment">//选择基准值</span></span><br><span class="line">            <span class="keyword">return</span> Arrays.concatenate(Arrays.append(quickivotArr(pivot, arr), pivot) ,quickivot(gtPipivot, arr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**、</span></span><br><span class="line"><span class="comment">     * 获取所有小于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] ltPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取所有大于基准值的子数组</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pivot</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> arr</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] gtPivotArr(<span class="keyword">int</span> pivot, <span class="keyword">int</span>[] arr) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; pivot) &#123;</span><br><span class="line">                res = Arrays.append(res, i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><ul>
-<li>D&amp;C将问题逐步分解。使用D&amp;C处理列表时，基线条件很可能是空数组或只包含一个元素的数组。</li>
-<li>实现快速排序时，请随机地选择用作基准值的元素。快速排序的平均运行时间为O(log n)。</li>
-<li>大O表示法的常量有时候事关重大，这就是快速排序比合并排序快的原因所在。（它们的运行时间都是n*log n）</li>
-<li>比较简单查找和二分查找时，常量几乎无关紧要，因为列表很长，O(log n)的速度比O(n)快得多。</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法图解小结part1-3</title>
-    <url>/2021/12/07/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3part1-3/</url>
-    <content><![CDATA[<h2 id="算法小结"><a href="#算法小结" class="headerlink" title="算法小结"></a>算法小结</h2><h3 id="PART-1-算法简介"><a href="#PART-1-算法简介" class="headerlink" title="PART 1 算法简介"></a>PART 1 算法简介</h3><ul>
-<li>二分查找的速度比简单查找快得多</li>
-<li>O(log n)比O(n)快，需要搜索的元素越多，前者比后者快的越多</li>
-<li>算法运行时间并不以秒为单位</li>
-<li>算法运行时间是从其增速的角度度量的</li>
-<li>算法运行时间用大O表示法表示</li>
-</ul>
-<h3 id="PART-2-选择排序"><a href="#PART-2-选择排序" class="headerlink" title="PART 2 选择排序"></a>PART 2 选择排序</h3><ul>
-<li>计算机内存犹如一大堆抽屉</li>
-<li>需要存储多个元素时，可使用数组或链表</li>
-<li>数组的元素都在一起</li>
-<li>链表的元素是分开的，其中每个元素都存储了下一个元素的地址</li>
-<li>数组的读取速度很快，O(1)</li>
-<li>链表的插入和删除速度很快</li>
-<li>在同一个数组中，所有元素的类型都必须相同（都为int、double等）</li>
-</ul>
-<h3 id="PART-3-递归"><a href="#PART-3-递归" class="headerlink" title="PART 3 递归"></a>PART 3 递归</h3><ul>
-<li>递归指的是调用自己的函数</li>
-<li>每个递归函数都有两个条件：基线条件和递归条件</li>
-<li>栈有两种操作：压入和弹出</li>
-<li>所有函数调用都进入调用栈</li>
-<li>调用栈可能很长，这将占用大量的内存（可使用尾递归，避免栈溢出）</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>算法图解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/12/02/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
